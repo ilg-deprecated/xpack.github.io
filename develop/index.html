@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <title>Developer resources</title>
-  <meta name="description" content="The extended packages management tools">
+  <meta name="description" content="Tools to manage, configure and build complex, package based, multi-target C/C++ projects.">
 
   <meta property="og:title" content="Developer resources">
   <meta property="og:site_name" content="xPack">
@@ -107,7 +107,7 @@
           </tr>
           <tr>
             <td class="site-description" colspan="2">
-              The extended packages management tools
+              Tools to manage, configure and build complex, package based, multi-target C/C++ projects.
             </td>
           </tr>
         </table>
@@ -145,6 +145,24 @@
       
       <h4 id="home"><a href="/">Home</a></h4>
 
+<h4 id="xpm">xpm</h4>
+
+<ul>
+  <li><a href="/xpm/">Overview</a></li>
+</ul>
+
+<h4 id="xmake">xmake</h4>
+
+<ul>
+  <li><a href="/xmake/">Overview</a></li>
+</ul>
+
+<h4 id="xcdl">xcdl</h4>
+
+<ul>
+  <li><a href="/xcdl/">Overview</a></li>
+</ul>
+
 <h4 id="developer">Developer</h4>
 
 <ul>
@@ -159,6 +177,7 @@
   <li><a href="/support/faq/">FAQ</a></li>
   <li><a href="/support/forum/">Forum</a></li>
   <li><a href="https://github.com/xpack/xpm-js/issues/">Report xpm issues</a></li>
+  <li><a href="https://github.com/xpack/xmake-js/issues/">Report xmake issues</a></li>
 </ul>
 
 <h4 id="license">License</h4>
@@ -185,15 +204,151 @@
 <h1 class="page-title">Developer resources</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Sun Oct  8 15:03:49 2017 UTC.</td>
+    <td id="last-modified">Last modified on Sun Oct  8 21:29:05 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/overview.md"><i class="fa fa-pencil"></i>  Improve this page</a></td>
   </tr>
 </table>
 
+<div id="toc-container">
+<table class="toc" id="toc">
+<tbody>
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toc_level-1 toc_section-1">
+<a href="#procedures"><span class="tocnumber">1</span> <span class="toctext">Procedures</span></a>
+</li>
+<li class="toc_level-1 toc_section-2">
+<a href="#developer"><span class="tocnumber">2</span> <span class="toctext">Developer</span></a>
+</li>
+<li class="toc_level-1 toc_section-3">
+<a href="#references"><span class="tocnumber">3</span> <span class="toctext">References</span></a>
+</li>
+<li class="toc_level-1 toc_section-4">
+<a href="#distribution-management-systems"><span class="tocnumber">4</span> <span class="toctext">Distribution management systems</span></a>
+</li>
+<li class="toc_level-1 toc_section-5">
+<a href="#iot-development-environments"><span class="tocnumber">5</span> <span class="toctext">IoT development environments</span></a>
+</li>
+<li class="toc_level-1 toc_section-6">
+<a href="#build-tools"><span class="tocnumber">6</span> <span class="toctext">Build tools</span></a>
+</li>
+<li class="toc_level-1 toc_section-7">
+<a href="#continuous-integration"><span class="tocnumber">7</span> <span class="toctext">Continuous integration</span></a>
+</li>
+<li class="toc_level-1 toc_section-8">
+<a href="#javascript-resources"><span class="tocnumber">8</span> <span class="toctext">JavaScript resources</span></a>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h2 id="procedures">Procedures</h2>
 
 <ul>
   <li><a href="/develop/how-to-release/">How to release</a></li>
+</ul>
+
+<h2 id="developer">Developer</h2>
+
+<ul>
+  <li><a href="/develop/js-style-guide/">JavaScript style guide</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>
+<a href="http://ecos.sourceware.org/">eCos</a> - <em>The embedded configurable operating system</em> by Cygnus Solutions (<a href="http://en.wikipedia.org/wiki/ECos">Wikipedia</a>)</li>
+  <li>Manual: <em>The eCos Component Writer’s Guide</em>, by Bart Veer and John Dallaway, published in 2001, available from <a href="http://ecos.sourceware.org/docs-3.0/">eCos Documentation</a>.</li>
+  <li>Book: <em>Embedded software development with eCos</em>, by Anthony J. Massa, published in 2003 at Prentice Hall, available from <a href="http://www.amazon.com/Embedded-Software-Development-Anthony-Massa/dp/0130354732">Amazon</a>
+</li>
+  <li>Book: <em>Software Build Systems: Principles and Experience</em>, by Peter Smith, published in 2011 at Addison Wesley, available from <a href="http://www.amazon.com/Software-Build-Systems-Principles-Experience/dp/0321717287">Amazon</a>
+</li>
+  <li>IEEE Std 830-1998: <em>IEEE Recommended Practice for Software Requirements Specifications</em>, published in 1998</li>
+  <li>
+<a href="http://www.keil.com/pack/doc/CMSIS/Pack/html/index.html">CMSIS-Pack</a> - ARM mechanism to install software, device support, APIs, and example projects</li>
+</ul>
+
+<h2 id="distribution-management-systems">Distribution management systems</h2>
+
+<ul>
+  <li>
+<a href="http://www.openembedded.org/wiki/Main_Page">OpenEmbedded</a> - the build framework for embedded Linux (with more detail in the Yocto documentation)</li>
+  <li>
+<a href="http://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.html">BitBake User Manual</a> (<a href="http://www.yoctoproject.org/docs/current/bitbake-user-manual/bitbake-user-manual.pdf">PDF</a>)</li>
+  <li><a href="https://devmanual.gentoo.org/index.html">Gentoo Development Guide</a></li>
+  <li><a href="https://guide.macports.org/">MacPorts Guide</a></li>
+  <li><a href="https://wiki.archlinux.org/index.php/PKGBUILD">Arch PKGBUILD</a></li>
+  <li>
+<a href="https://www.npmjs.com">NPM</a> - the package manager for JS (special interest for the packet.json format)</li>
+  <li>
+<a href="http://yottadocs.mbed.com">yotta</a> - mbed module manager</li>
+</ul>
+
+<h2 id="iot-development-environments">IoT development environments</h2>
+
+<ul>
+  <li><a href="https://www.mbed.com/en/development/mbed-os/#">mBed OS</a></li>
+  <li><a href="https://mynewt.apache.org">Apache mynewt</a></li>
+</ul>
+
+<h2 id="build-tools">Build tools</h2>
+
+<p>For an exhaustive list, see <a href="https://en.wikipedia.org/wiki/List_of_build_automation_software">Wikipedia</a>.</p>
+
+<ul>
+  <li>
+<a href="https://maven.apache.org/">Apache Maven</a> (written in Java, XML configuration files)</li>
+  <li>
+<a href="http://scons.org/">SCons</a> (configuration files are Python scripts)</li>
+  <li>
+<a href="https://github.com/ruby/rake">RAKE - Ruby Make</a> (tasks and dependencies in Ruby)</li>
+  <li>
+<a href="http://buildr.apache.org">buildr</a> - Apache Buildr is a build system for Java-based applications</li>
+  <li>
+<a href="https://gradle.org/">Gradle</a> (written in Groovy)</li>
+  <li>
+<a href="http://www.cmake.org/">CMake</a> (written in C++; uses native builders like make)</li>
+  <li>
+<a href="https://github.com/waf-project/waf">Waf</a> (a build tool written in Python)</li>
+  <li>
+<a href="https://www.gnu.org/software/make/">GNU Make</a> (the classical tool; hopeless for folders with spaces)</li>
+</ul>
+
+<h2 id="continuous-integration">Continuous integration</h2>
+
+<p>For an exhaustive list see <a href="https://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software">Wikipedia</a>.</p>
+
+<ul>
+  <li>
+<a href="http://hudson-ci.org/">Hudson</a> (the original Sun project, donated by Oracle to the Eclipse Foundation)</li>
+  <li>
+<a href="http://jenkins-ci.org/">Jenkins</a> (the more active fork, backed by the project creator)</li>
+  <li>
+<a href="https://travis-ci.org">Travis</a> (the GitHub prefered solution, very good integration)</li>
+</ul>
+
+<h2 id="javascript-resources">JavaScript resources</h2>
+
+<ul>
+  <li><a href="http://www.amazon.com/JavaScript-Definitive-Guide-Activate-Guides/dp/0596805527/">Book: JavaScript: The Definitive Guide (6th Edition) by David Flanagan</a></li>
+  <li><a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742/">Book: JavaScript: The Good Parts by Douglas Crockford</a></li>
+  <li>
+<a href="http://www.crockford.com/javascript/">Crockford JavaScript</a>
+    <ul>
+      <li><a href="http://www.crockford.com/javascript/private.html">Private Members in JavaScript</a></li>
+      <li><a href="http://javascript.crockford.com/inheritance.html">Classical Inheritance in JavaScript</a></li>
+    </ul>
+  </li>
+  <li><a href="https://nodejs.org/en/">node.js</a></li>
+  <li><a href="https://www.npmjs.com/">npm</a></li>
+  <li><a href="https://github.com/felixge/node-style-guide">Felix Geisendörfer’s Node.js Style Guide</a></li>
 </ul>
 
 
