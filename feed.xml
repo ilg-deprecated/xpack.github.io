@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xPack</title>
+    <description>The extended packages management tools</description>
+    <link>http://xpack.github.io/</link>
+    <atom:link href="http://xpack.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 08 Oct 2017 15:06:44 +0000</pubDate>
+    <lastBuildDate>Sun, 08 Oct 2017 15:06:44 +0000</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>The xPack new web site</title>
+        <description>&lt;p&gt;After several re-branding steps, the xPack project (formerly XCDL), available from &lt;a href=&quot;https://github.com/xpack&quot;&gt;GitHub&lt;/a&gt;, has a new web site.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 01 Oct 2017 12:26:00 +0000</pubDate>
+        <link>http://xpack.github.io/blog/2017/10/01/web-new-look/</link>
+        <guid isPermaLink="true">http://xpack.github.io/blog/2017/10/01/web-new-look/</guid>
+        
+        
+        <category>news</category>
+        
+        <category>web</category>
+        
+      </item>
+    
+  </channel>
+</rss>
