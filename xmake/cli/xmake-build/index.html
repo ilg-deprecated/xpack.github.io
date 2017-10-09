@@ -208,7 +208,7 @@
 <h1 class="page-title">xmake build - Build one or more configurations</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Mon Oct  9 13:54:02 2017 UTC.</td>
+    <td id="last-modified">Last modified on Mon Oct  9 14:11:52 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xmake/cli/xmake-build.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -241,7 +241,7 @@
 
 <h2 id="synopsis">Synopsis</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>xmake build [--target &lt;name&gt;]* [--profile &lt;name&gt;]* [--toolchain &lt;name&gt;]* [-- &lt;args&gt;]
+<div class="highlighter-rouge"><pre class="highlight"><code>xmake build [--target &lt;name&gt;]* [--toolchain &lt;name&gt;]* [--profile &lt;name&gt;]* [-- &lt;args&gt;]
 </code></pre>
 </div>
 
@@ -256,9 +256,9 @@
 <p>This command expects an <code class="highlighter-rouge">xmake.json</code> file in the CWD, to define the 
 build configurations.</p>
 
-<p>A <strong>build configuration</strong> is a triplet (target, profile, toolchain).</p>
+<p>A <strong>build configuration</strong> is a triplet (target, toolchain, profile).</p>
 
-<p>For each configuration, <code class="highlighter-rouge">xmake build</code> creates a subfolder in the CWD, 
+<p>For each configuration, <code class="highlighter-rouge">xmake build</code> creates a sub-folder in the CWD, 
 named <code class="highlighter-rouge">build/&lt;name&gt;-&lt;target&gt;-&lt;toolchain&gt;-&lt;profile&gt;</code>.</p>
 
 <p>If multiple names are defined for target/toolchain/profile, a 
@@ -272,13 +272,13 @@ is invoked with the extra arguments.</p>
 
 <h2 id="examples">Examples</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ cd xyz-xpack.git
-$ xmake build -- clean all
-</code></pre>
+<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">cd</span><span class="kv"> xyz-xpack.git
+</span><span class="w">$ </span><span class="nc">xmake</span><span class="kv"> build -- clean all
+</span></code></pre>
 </div>
 
-<p>When executed, this command creates sub-folders like <code class="highlighter-rouge">darwin-debug-clang</code> and 
-<code class="highlighter-rouge">darwin-release-clang</code> and <code class="highlighter-rouge">make</code> is invoked in each folder
+<p>When executed, this command creates sub-folders like <code class="highlighter-rouge">darwin-clang-debug</code> and 
+<code class="highlighter-rouge">darwin-clang-release</code> and invokes <code class="highlighter-rouge">make</code> in each folder
 to run the actual build.</p>
 
 
