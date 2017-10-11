@@ -9,16 +9,16 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>xmake build - Build one or more configurations</title>
+  <title>The xcdl format</title>
   <meta name="description" content="Tools to manage, configure and build complex, package based, multi-target, C/C++ projects.">
 
-  <meta property="og:title" content="xmake build - Build one or more configurations" />
+  <meta property="og:title" content="The xcdl format" />
   <meta property="og:site_name" content="xPack" />
 
   <link rel="alternate" type="application/rss+xml" title="xPack" href="/feed.xml" />
 
 
-  <meta property="article:published_time" content="2017-10-09">
+  <meta property="article:published_time" content="2017-10-10">
 
 
 
@@ -32,7 +32,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.css?201710011132" media="screen">
   <link rel="stylesheet" type="text/css" href="/stylesheets/print.css?201710011132" media="print">
 
-  <link rel="canonical" href="http://xpack.github.io/xmake/cli/xmake-build/">
+  <link rel="canonical" href="http://xpack.github.io/xcdl/files/xcdl-json/">
 
 
 
@@ -211,82 +211,16 @@
       <div class="site-content">
 
         
-<h1 class="page-title">xmake build - Build one or more configurations</h1>
+<h1 class="page-title">The xcdl format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Mon Oct  9 14:11:52 2017 UTC.</td>
-    <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xmake/cli/xmake-build.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
+    <td id="last-modified">Last modified on Wed Oct 11 11:34:10 2017 UTC.</td>
+    <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xcdl/files/xcdl-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
 
 
-<div id="toc-container">
-<table class="toc" id="toc">
-<tbody>
-<tr>
-<td>
-<div id="toctitle">
-<h2>Contents</h2>
-</div>
-<ul>
-<li class="toc_level-1 toc_section-1">
-<a href="#synopsis"><span class="tocnumber">1</span> <span class="toctext">Synopsis</span></a>
-</li>
-<li class="toc_level-1 toc_section-2">
-<a href="#description"><span class="tocnumber">2</span> <span class="toctext">Description</span></a>
-</li>
-<li class="toc_level-1 toc_section-3">
-<a href="#examples"><span class="tocnumber">3</span> <span class="toctext">Examples</span></a>
-</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div><p>Generate the build files and build.</p>
-
-<h2 id="synopsis">Synopsis</h2>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>xmake build [--target &lt;name&gt;]* [--toolchain &lt;name&gt;]* [--profile &lt;name&gt;]* [-- &lt;args&gt;]
-</code></pre>
-</div>
-
-<p>Aliases:</p>
-<ul>
-  <li><code class="highlighter-rouge">b</code></li>
-  <li><code class="highlighter-rouge">bild</code></li>
-</ul>
-
-<h2 id="description">Description</h2>
-
-<p>This command expects an <code class="highlighter-rouge">xmake.json</code> file in the CWD, to define the 
-build configurations.</p>
-
-<p>A <strong>build configuration</strong> is a triplet (target, toolchain, profile).</p>
-
-<p>For each configuration, <code class="highlighter-rouge">xmake build</code> creates a sub-folder in the CWD, 
-named <code class="highlighter-rouge">build/&lt;name&gt;-&lt;target&gt;-&lt;toolchain&gt;-&lt;profile&gt;</code>.</p>
-
-<p>If multiple names are defined for target/toolchain/profile, a 
-matrix of configurations is constructed.</p>
-
-<p>All names must be letters, hyphens, or digits. When used to 
-create paths, all letters are converted to lower case.</p>
-
-<p>After generating the build folders, the native builder (like <code class="highlighter-rouge">make</code>) 
-is invoked with the extra arguments.</p>
-
-<h2 id="examples">Examples</h2>
-
-<div class="language-console highlighter-rouge"><pre class="highlight"><code><span class="w">$ </span><span class="nc">cd</span><span class="kv"> xyz-xpack.git
-</span><span class="w">$ </span><span class="nc">xmake</span><span class="kv"> build -- clean all
-</span></code></pre>
-</div>
-
-<p>When executed, this command creates sub-folders like <code class="highlighter-rouge">darwin-clang-debug</code> and 
-<code class="highlighter-rouge">darwin-clang-release</code> and invokes <code class="highlighter-rouge">make</code> in each folder
-to run the actual build.</p>
-
+<p>TBD</p>
 
 
 
@@ -296,7 +230,7 @@ to run the actual build.</p>
 
 
 <ul class="share-buttons">
-  <li><div class="fb-share-button" data-href="http://xpack.github.io/xmake/cli/xmake-build/" data-layout="button"></div></li>
+  <li><div class="fb-share-button" data-href="http://xpack.github.io/xcdl/files/xcdl-json/" data-layout="button"></div></li>
   <li><div class="tw-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div></li>
 </ul>
 

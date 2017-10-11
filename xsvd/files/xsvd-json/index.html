@@ -32,7 +32,7 @@
   <link rel="stylesheet" type="text/css" href="/stylesheets/font-awesome.css?201710011132" media="screen">
   <link rel="stylesheet" type="text/css" href="/stylesheets/print.css?201710011132" media="print">
 
-  <link rel="canonical" href="http://xpack.github.io/xcdl/files/xsvd-json">
+  <link rel="canonical" href="http://xpack.github.io/xsvd/files/xsvd-json/">
 
 
 
@@ -169,6 +169,12 @@
   <li><a href="/xcdl/">Overview</a></li>
 </ul>
 
+<h4 id="xsvd">xsvd</h4>
+
+<ul>
+  <li><a href="/xsvd/">Overview</a></li>
+</ul>
+
 <h4 id="developer">Developer</h4>
 
 <ul>
@@ -208,8 +214,8 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 11 11:02:50 2017 UTC.</td>
-    <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xcdl/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
+    <td id="last-modified">Last modified on Wed Oct 11 11:46:55 2017 UTC.</td>
+    <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
 
@@ -299,13 +305,13 @@
 
 <p>The <strong>xsvd</strong> format is inspired from ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, which is based on XML and was influenced by <a href="https://en.wikipedia.org/wiki/IP-XACT">IP-XACT</a>.</p>
 
-<p>The xsvd content is generally similar to the SVD content, but it is better structured in a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
+<p>The xsvd content is generally similar to the SVD content, but it has a better structure, using a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
 
-<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to <strong>xsvd</strong>.</p>
+<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to xsvd.</p>
 
 <h2 id="purpose">Purpose</h2>
 
-<p>Contrary to the wider scope of IP-XACT, the xsvd format was intentionally kept simple, since it is currently intended only to:</p>
+<p>Contrary to the wider scope of IP-XACT, the xsvd format was intentionally kept as simple as possible, since it is currently intended only to:</p>
 
 <ul>
   <li>allow debuggers to display memory mapped peripherals, with separate fields for registers</li>
@@ -1341,7 +1347,7 @@ the lsb and the bit-width of the field.</p>
 
 
 <ul class="share-buttons">
-  <li><div class="fb-share-button" data-href="http://xpack.github.io/xcdl/files/xsvd-json" data-layout="button"></div></li>
+  <li><div class="fb-share-button" data-href="http://xpack.github.io/xsvd/files/xsvd-json/" data-layout="button"></div></li>
   <li><div class="tw-share-button"><a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a></div></li>
 </ul>
 
