@@ -214,7 +214,7 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 11 16:39:32 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Oct 11 21:31:12 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -253,50 +253,53 @@
 <li class="toc_level-2 toc_section-8">
 <a href="#repeat-generators"><span class="tocnumber">3.5</span> <span class="toctext">Repeat generators</span></a>
 </li>
+<li class="toc_level-2 toc_section-9">
+<a href="#reset-masks"><span class="tocnumber">3.6</span> <span class="toctext">Reset masks</span></a>
+</li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-9">
+<li class="toc_level-1 toc_section-10">
 <a href="#revision-history"><span class="tocnumber">4</span> <span class="toctext">Revision history</span></a>
 </li>
-<li class="toc_level-1 toc_section-10">
+<li class="toc_level-1 toc_section-11">
 <a href="#objects"><span class="tocnumber">5</span> <span class="toctext">Objects</span></a>
 <ul>
-<li class="toc_level-2 toc_section-11">
+<li class="toc_level-2 toc_section-12">
 <a href="#the-root-object"><span class="tocnumber">5.1</span> <span class="toctext">The root object</span></a>
 </li>
-<li class="toc_level-2 toc_section-12">
+<li class="toc_level-2 toc_section-13">
 <a href="#the-device-object"><span class="tocnumber">5.2</span> <span class="toctext">The device object</span></a>
 </li>
-<li class="toc_level-2 toc_section-13">
+<li class="toc_level-2 toc_section-14">
 <a href="#the-cpu-object"><span class="tocnumber">5.3</span> <span class="toctext">The cpu object</span></a>
 </li>
-<li class="toc_level-2 toc_section-14">
+<li class="toc_level-2 toc_section-15">
 <a href="#the-peripheral-object"><span class="tocnumber">5.4</span> <span class="toctext">The peripheral object</span></a>
 </li>
-<li class="toc_level-2 toc_section-15">
+<li class="toc_level-2 toc_section-16">
 <a href="#the-cluster-object"><span class="tocnumber">5.5</span> <span class="toctext">The cluster object</span></a>
 </li>
-<li class="toc_level-2 toc_section-16">
+<li class="toc_level-2 toc_section-17">
 <a href="#the-register-object"><span class="tocnumber">5.6</span> <span class="toctext">The register object</span></a>
 </li>
-<li class="toc_level-2 toc_section-17">
+<li class="toc_level-2 toc_section-18">
 <a href="#the-field-object"><span class="tocnumber">5.7</span> <span class="toctext">The field object</span></a>
 </li>
-<li class="toc_level-2 toc_section-18">
+<li class="toc_level-2 toc_section-19">
 <a href="#the-enumeration-object"><span class="tocnumber">5.8</span> <span class="toctext">The enumeration object</span></a>
 </li>
-<li class="toc_level-2 toc_section-19">
+<li class="toc_level-2 toc_section-20">
 <a href="#the-enumerated-value-object"><span class="tocnumber">5.9</span> <span class="toctext">The enumerated value object</span></a>
 </li>
-<li class="toc_level-2 toc_section-20">
+<li class="toc_level-2 toc_section-21">
 <a href="#the-interrupt-object"><span class="tocnumber">5.10</span> <span class="toctext">The interrupt object</span></a>
 </li>
-<li class="toc_level-2 toc_section-21">
+<li class="toc_level-2 toc_section-22">
 <a href="#the-generator-object"><span class="tocnumber">5.11</span> <span class="toctext">The generator object</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-22">
+<li class="toc_level-1 toc_section-23">
 <a href="#todo"><span class="tocnumber">6</span> <span class="toctext">TODO</span></a>
 </li>
 </ul>
@@ -332,7 +335,7 @@
 
 <h3 id="names">Names</h3>
 
-<p>Since some xsvd definitions may be used to support the generation of C/C++ code files (object names may be used to compose type and macro definitions), the names must comply with ANSI C naming restrictions. In particular, they must not contain any spaces or special characters.</p>
+<p>Since some xsvd definitions may be used to support the generation of C/C++ code files (object names may be used to compose type and macro definitions), the names must comply with ANSI C naming restrictions. In particular, they must not contain any spaces or special characters. Hyphens are allowed, but, when used to compose definitions, will be converted to underscores.</p>
 
 <h3 id="values">Values</h3>
 
@@ -368,9 +371,13 @@
   <li>a range of letters, like <code class="highlighter-rouge">A-G</code>.</li>
 </ul>
 
+<h3 id="reset-masks">Reset masks</h3>
+
+<p>In addition to hex values, the strings <code class="highlighter-rouge">all</code> and <code class="highlighter-rouge">none</code> can be used, with the meaning of 0xFF..FF and 0x0.</p>
+
 <h2 id="revision-history">Revision history</h2>
 
-<p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object.</p>
+<p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
 
 <p>Versions are listed in reverse chronological order.</p>
 
@@ -424,7 +431,7 @@
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">generators</code></td>
       <td style="text-align: left">array</td>
-      <td style="text-align: left">Array of generator objects describing the tools that generated/modified this file.</td>
+      <td style="text-align: left">Array of generator objects describing the tools that generated/modified the current file.</td>
     </tr>
   </tbody>
 </table>
@@ -497,17 +504,17 @@
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for all registers. Values: [ “ro”, “rw” ].</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Default value for all registers at RESET.</td>
+      <td style="text-align: left">Default access rights for all registers. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The register bits that have a defined reset value.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Default value for all registers at RESET.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">cpu</code></td>
@@ -571,7 +578,7 @@
 Each peripheral has a memory block where the registers are allocated, defined as a base address and a size.
 Register addresses are specified relative to the base address of a peripheral.</p>
 
-<p>Multiple similar peripherals sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property; for example instead of defining GPIOA, GPIOB, GPIOC, use <code class="highlighter-rouge">GPIO%s</code> (or simply <code class="highlighter-rouge">GPIO</code>, since %s at the end is default) and define separate generators like <code class="highlighter-rouge">A,B,C</code> or <code class="highlighter-rouge">A-C</code>.</p>
+<p>Multiple similar peripherals sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property; for example instead of defining <code class="highlighter-rouge">GPIOA</code>, <code class="highlighter-rouge">GPIOB</code>, <code class="highlighter-rouge">GPIOC</code>, use <code class="highlighter-rouge">GPIO%s</code> (or simply <code class="highlighter-rouge">GPIO</code>, since <code class="highlighter-rouge">%s</code> at the end is default) and define separate generators like <code class="highlighter-rouge">A,B,C</code> or <code class="highlighter-rouge">A-C</code>.</p>
 
 <p>The <code class="highlighter-rouge">repeatIncrement</code> property specifies the address offset between two peripherals.</p>
 
@@ -632,17 +639,17 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for all peripheral registers. Values: [“ro”,”rw”].</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Default value for all peripheral registers at RESET.</td>
+      <td style="text-align: left">Default access rights for all peripheral registers. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The register bits that have a defined reset value.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Default value for all peripheral registers at RESET.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">repeatIncrement</code></td>
@@ -761,17 +768,17 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: [“ro”,”rw”].</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Default value for the register at RESET.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The register bits that have a defined reset value.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Default value for the register at RESET.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">repeatIncrement</code></td>
@@ -892,17 +899,17 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: [“ro”,”rw”].</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Default value for the register at RESET.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The register bits that have a defined reset value.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Default value for the register at RESET.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">repeatIncrement</code></td>
@@ -1017,17 +1024,17 @@ the lsb and the bit-width of the field.</p>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: [“ro”,”rw”].</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Default value for the field at RESET.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The field bits that have a defined reset value.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Default value for the field at RESET.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">repeatIncrement</code></td>
@@ -1242,7 +1249,7 @@ the lsb and the bit-width of the field.</p>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">type</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">The interrupt type, if the architecture defines multiple interrupt spaces. Architecture specific. For RISC-V use <code class="highlighter-rouge">["local","global"].</code></td>
+      <td style="text-align: left">The interrupt type, if the architecture defines multiple interrupt spaces. Architecture specific. For RISC-V use <code class="highlighter-rouge">["local","global"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">headerIrqName</code></td>
