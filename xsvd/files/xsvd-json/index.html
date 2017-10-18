@@ -214,7 +214,7 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 11 21:31:12 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Oct 18 12:39:22 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -271,35 +271,38 @@
 <a href="#the-device-object"><span class="tocnumber">5.2</span> <span class="toctext">The device object</span></a>
 </li>
 <li class="toc_level-2 toc_section-14">
-<a href="#the-cpu-object"><span class="tocnumber">5.3</span> <span class="toctext">The cpu object</span></a>
+<a href="#the-vendor-object"><span class="tocnumber">5.3</span> <span class="toctext">The vendor object</span></a>
 </li>
 <li class="toc_level-2 toc_section-15">
-<a href="#the-peripheral-object"><span class="tocnumber">5.4</span> <span class="toctext">The peripheral object</span></a>
+<a href="#the-cpu-object"><span class="tocnumber">5.4</span> <span class="toctext">The cpu object</span></a>
 </li>
 <li class="toc_level-2 toc_section-16">
-<a href="#the-cluster-object"><span class="tocnumber">5.5</span> <span class="toctext">The cluster object</span></a>
+<a href="#the-peripheral-object"><span class="tocnumber">5.5</span> <span class="toctext">The peripheral object</span></a>
 </li>
 <li class="toc_level-2 toc_section-17">
-<a href="#the-register-object"><span class="tocnumber">5.6</span> <span class="toctext">The register object</span></a>
+<a href="#the-cluster-object"><span class="tocnumber">5.6</span> <span class="toctext">The cluster object</span></a>
 </li>
 <li class="toc_level-2 toc_section-18">
-<a href="#the-field-object"><span class="tocnumber">5.7</span> <span class="toctext">The field object</span></a>
+<a href="#the-register-object"><span class="tocnumber">5.7</span> <span class="toctext">The register object</span></a>
 </li>
 <li class="toc_level-2 toc_section-19">
-<a href="#the-enumeration-object"><span class="tocnumber">5.8</span> <span class="toctext">The enumeration object</span></a>
+<a href="#the-field-object"><span class="tocnumber">5.8</span> <span class="toctext">The field object</span></a>
 </li>
 <li class="toc_level-2 toc_section-20">
-<a href="#the-enumerated-value-object"><span class="tocnumber">5.9</span> <span class="toctext">The enumerated value object</span></a>
+<a href="#the-enumeration-object"><span class="tocnumber">5.9</span> <span class="toctext">The enumeration object</span></a>
 </li>
 <li class="toc_level-2 toc_section-21">
-<a href="#the-interrupt-object"><span class="tocnumber">5.10</span> <span class="toctext">The interrupt object</span></a>
+<a href="#the-enumerated-value-object"><span class="tocnumber">5.10</span> <span class="toctext">The enumerated value object</span></a>
 </li>
 <li class="toc_level-2 toc_section-22">
-<a href="#the-generator-object"><span class="tocnumber">5.11</span> <span class="toctext">The generator object</span></a>
+<a href="#the-interrupt-object"><span class="tocnumber">5.11</span> <span class="toctext">The interrupt object</span></a>
+</li>
+<li class="toc_level-2 toc_section-23">
+<a href="#the-generator-object"><span class="tocnumber">5.12</span> <span class="toctext">The generator object</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-23">
+<li class="toc_level-1 toc_section-24">
 <a href="#todo"><span class="tocnumber">6</span> <span class="toctext">TODO</span></a>
 </li>
 </ul>
@@ -373,13 +376,26 @@
 
 <h3 id="reset-masks">Reset masks</h3>
 
-<p>In addition to hex values, the strings <code class="highlighter-rouge">all</code> and <code class="highlighter-rouge">none</code> can be used, with the meaning of 0xFF..FF and 0x0.</p>
+<p>In addition to hex values, the strings <code class="highlighter-rouge">all</code> and <code class="highlighter-rouge">none</code> can be used, with the meaning of <code class="highlighter-rouge">0xFF..FF</code> and <code class="highlighter-rouge">0x0</code>.</p>
 
 <h2 id="revision-history">Revision history</h2>
 
 <p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
 
 <p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v021-2017-10-18">v0.2.1 (2017-10-18)</h4>
+
+<ul>
+  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.1</li>
+  <li>rename top <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">contentVersion</code></li>
+  <li>rename device <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">siliconVersion</code></li>
+  <li>add <code class="highlighter-rouge">groupName</code> to peripheral</li>
+  <li>the content of <code class="highlighter-rouge">access</code> was changed to [“r”,”w”,”rw”]</li>
+  <li><code class="highlighter-rouge">repeatIncrement</code> ignored for register</li>
+  <li>add <code class="highlighter-rouge">headerTypePrefix</code> to device</li>
+  <li>add <code class="highlighter-rouge">vendor</code> to device</li>
+</ul>
 
 <h4 id="v020-2017-10-11">v0.2.0 (2017-10-11)</h4>
 
@@ -391,7 +407,7 @@
   <li>explicit separate definitions for repetitions and arrays</li>
   <li>accept repetitions for fields</li>
   <li>accept <code class="highlighter-rouge">resetValue</code> and <code class="highlighter-rouge">resetMask</code> for fields</li>
-  <li>the <code class="highlighter-rouge">access</code> property was simplified to <code class="highlighter-rouge">[“ro”,”rw”]</code></li>
+  <li>the <code class="highlighter-rouge">access</code> property was simplified to <code class="highlighter-rouge">["r","w","rw"]</code></li>
   <li>use <code class="highlighter-rouge">busWidth</code> (instead of <code class="highlighter-rouge">&lt;width&gt;</code>)</li>
   <li>use <code class="highlighter-rouge">regWidth</code> (instead of <code class="highlighter-rouge">&lt;size&gt;</code>)</li>
   <li>use <code class="highlighter-rouge">repeatIncrement</code> (instead of <code class="highlighter-rouge">&lt;dimIncrement&gt;</code>)</li>
@@ -504,7 +520,7 @@
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for all registers. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
+      <td style="text-align: left">Default access rights for all registers. Values: <code class="highlighter-rouge">["r","w","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
@@ -515,6 +531,16 @@
       <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">Default value for all registers at RESET.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">headerTypePrefix</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The prefix to be used on type definitions.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">vendor</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">The device vendor.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">cpu</code></td>
@@ -552,6 +578,55 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
+
+<h3 id="the-vendor-object">The <em>vendor</em> object</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A <strong>device</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The device vendor.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">name</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The vendor short name.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">id</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The vendor numeric id; should not change over time.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A string to externally identify the vendor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">contact</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Contact information.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="the-cpu-object">The <em>cpu</em> object</h3>
 
@@ -622,6 +697,11 @@ Register addresses are specified relative to the base address of a peripheral.</
       <td style="text-align: left">A long string to describe the peripheral.</td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">groupName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Define a name for several related peripherals; used when generating types.</td>
+    </tr>
+    <tr>
       <td style="text-align: left"><code class="highlighter-rouge">baseAddress</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The lowest address of the memory block used by the peripheral.</td>
@@ -639,7 +719,7 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for all peripheral registers. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
+      <td style="text-align: left">Default access rights for all peripheral registers. Values: <code class="highlighter-rouge">["r","w","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
@@ -768,7 +848,7 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["r","w","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
@@ -899,7 +979,7 @@ Register addresses are specified relative to the base address of a peripheral.</
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["r","w","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>
@@ -910,11 +990,6 @@ Register addresses are specified relative to the base address of a peripheral.</
       <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">Default value for the register at RESET.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">repeatIncrement</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">The address increment, in bytes, between two neighbouring registers in a repetition or an array.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">repeatGenerator</code></td>
@@ -1024,7 +1099,7 @@ the lsb and the bit-width of the field.</p>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">access</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["ro","rw"]</code>.</td>
+      <td style="text-align: left">Default access rights for the register. Values: <code class="highlighter-rouge">["r","w","rw"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">resetMask</code></td>

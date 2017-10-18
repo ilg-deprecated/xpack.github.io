@@ -214,7 +214,7 @@
 <h1 class="page-title">JavaScript Style Guide</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Mon Oct  9 00:01:45 2017 UTC.</td>
+    <td id="last-modified">Last modified on Thu Oct 12 09:28:47 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/js-style-guide.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -317,7 +317,7 @@
 <a href="#use-promises-instead-of-callbacks"><span class="tocnumber">4.3</span> <span class="toctext">Use promises instead of callbacks</span></a>
 </li>
 <li class="toc_level-2 toc_section-28">
-<a href="#use-asyncawait-for-anynchronous-calls"><span class="tocnumber">4.4</span> <span class="toctext">Use async/await for anynchronous calls</span></a>
+<a href="#use-asyncawait-for-asynchronous-calls"><span class="tocnumber">4.4</span> <span class="toctext">Use async/await for asynchronous calls</span></a>
 </li>
 <li class="toc_level-2 toc_section-29">
 <a href="#use-static-class-members-for-sharing"><span class="tocnumber">4.5</span> <span class="toctext">Use static class members for sharing</span></a>
@@ -534,11 +534,11 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 <h3 id="case-naming-etc">Case, naming, etc</h3>
 
 <ul>
-  <li>use <strong>lowerCamelCase</strong> for multiword identifiers when they refer to objects, functions, methods, properties, or anything not specified in this section</li>
-  <li>use <strong>UpperCamelCase</strong> for class names (things that you’d pass to “new”)</li>
-  <li>use <strong>all-lower-hyphen-css-case</strong> for multiword filenames and config keys</li>
+  <li>use <code class="highlighter-rouge">lowerCamelCase</code> for multi-word identifiers when they refer to objects, functions, methods, properties, or anything not specified in this section</li>
+  <li>use <code class="highlighter-rouge">UpperCamelCase</code> for class names (things that you’d pass to “new”)</li>
+  <li>use <code class="highlighter-rouge">all-lower-hyphen-css-case</code> for multi-word filenames and config keys</li>
   <li>use named functions, they make stack traces easier to follow</li>
-  <li>use <strong>CAPS_SNAKE_CASE</strong> for constants, things that should never change and are rarely used</li>
+  <li>use <code class="highlighter-rouge">CAPS_SNAKE_CASE</code> for constants, things that should never change and are rarely used</li>
 </ul>
 
 <h3 id="null-undefined-false">null, undefined, false</h3>
@@ -560,7 +560,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <h3 id="modules">Modules</h3>
 
-<p>Modules are a way of preventing multiple JavaScript units to polute the global namespace.</p>
+<p>Modules are a way of preventing multiple JavaScript units to pollute the global namespace.</p>
 
 <p>Objects defined at root level in a module are not global, but belong to the module; the usual name for this is <em>module-global</em>.</p>
 
@@ -582,7 +582,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 </code></pre>
 </div>
 
-<p>Although you can rewrite the <code class="highlighter-rouge">module.export</code> to be a sinle function (such as a constructor), still prefer to add them as properties to the object and refer to them explicitly in the <code class="highlighter-rouge">require()</code> line:</p>
+<p>Although you can rewrite the <code class="highlighter-rouge">module.export</code> to be a single function (such as a constructor), still prefer to add them as properties to the object and refer to them explicitly in the <code class="highlighter-rouge">require()</code> line:</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">square</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./square.js'</span><span class="p">).</span><span class="nx">square</span>
 <span class="kr">const</span> <span class="nx">mySquare</span> <span class="o">=</span> <span class="nx">square</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -654,13 +654,13 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <h3 id="use-classes-as-much-as-possible">Use classes as much as possible</h3>
 
-<p>Even if the new syntax is mostly syntactic sugar, and internally things behave as strangly as they did in the first JavaScript versions, still <strong>use the new class syntax</strong> at large; it is much cleaner and improves readability.</p>
+<p>Even if the new syntax is mostly syntactic sugar, and internally things behave as strangely as they did in the first JavaScript versions, still <strong>use the new class syntax</strong> at large; it is much cleaner and improves readability.</p>
 
 <h3 id="use-promises-instead-of-callbacks">Use promises instead of callbacks</h3>
 
 <p>Really. No callbacks at all. Use promises.</p>
 
-<h3 id="use-asyncawait-for-anynchronous-calls">Use async/await for anynchronous calls</h3>
+<h3 id="use-asyncawait-for-asynchronous-calls">Use async/await for asynchronous calls</h3>
 
 <p>Once <code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">await</code> became standard, and the V8 engine added support for them, there is no reason for not using <code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">await</code>.</p>
 
@@ -701,7 +701,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <p>Prepare your module to export multiple functions; group them (by functionality) either below a parent object, or, even better, in classes with static members.</p>
 
-<p>The main advantage of this scheme is that adding new exports will only change the interface incrementaly, minimising the risk to break backward compatibility.</p>
+<p>The main advantage of this scheme is that adding new exports will only change the interface incrementally, minimising the risk to break backward compatibility.</p>
 
 <h2 id="make-node-exportsimports-look-like-es6-exportsimports">Make node exports/imports look like ES6 exports/imports</h2>
 
@@ -722,7 +722,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 </code></pre>
 </div>
 
-<p>Cases like <code class="highlighter-rouge">import { WscriptAvoider as Xyz } from 'wscript-avoider.js'</code> would be naturaly represented as:</p>
+<p>Cases like <code class="highlighter-rouge">import { WscriptAvoider as Xyz } from 'wscript-avoider.js'</code> would be naturally represented as:</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Xyz</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wscript-avoider'</span><span class="p">).</span><span class="nx">WscriptAvoider</span>
 <span class="nx">Xyz</span><span class="p">.</span><span class="nx">quitIfWscript</span><span class="p">(</span><span class="nx">appName</span><span class="p">)</span>
@@ -733,7 +733,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <h2 id="links-to-other-style-guides">Links to other style guides</h2>
 
-<p>Prefered:</p>
+<p>Preferred:</p>
 
 <ul>
   <li><a href="https://standardjs.com">JavaScript “Standard” Style</a></li>
@@ -753,7 +753,7 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <h2 id="linting-tools">Linting Tools</h2>
 
-<p>Prefered (used automatically by Standard):</p>
+<p>Preferred (used automatically by Standard):</p>
 
 <ul>
   <li><a href="http://eslint.org/">ESLint</a>, but indirectly via the ‘Standard JS’ tools.</li>
