@@ -214,7 +214,7 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 18 12:39:22 2017 UTC.</td>
+    <td id="last-modified">Last modified on Tue Oct 24 15:30:33 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -274,7 +274,7 @@
 <a href="#the-vendor-object"><span class="tocnumber">5.3</span> <span class="toctext">The vendor object</span></a>
 </li>
 <li class="toc_level-2 toc_section-15">
-<a href="#the-cpu-object"><span class="tocnumber">5.4</span> <span class="toctext">The cpu object</span></a>
+<a href="#the-cores-object"><span class="tocnumber">5.4</span> <span class="toctext">The cores object</span></a>
 </li>
 <li class="toc_level-2 toc_section-16">
 <a href="#the-peripheral-object"><span class="tocnumber">5.5</span> <span class="toctext">The peripheral object</span></a>
@@ -374,6 +374,8 @@
   <li>a range of letters, like <code class="highlighter-rouge">A-G</code>.</li>
 </ul>
 
+<p>Note: currently ranges are not implemented.</p>
+
 <h3 id="reset-masks">Reset masks</h3>
 
 <p>In addition to hex values, the strings <code class="highlighter-rouge">all</code> and <code class="highlighter-rouge">none</code> can be used, with the meaning of <code class="highlighter-rouge">0xFF..FF</code> and <code class="highlighter-rouge">0x0</code>.</p>
@@ -383,6 +385,20 @@
 <p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
 
 <p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v022-2017-10-23">v0.2.2 (2017-10-23)</h4>
+
+<ul>
+  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.2</li>
+  <li>add top <code class="highlighter-rouge">headerVersion</code></li>
+  <li>add <code class="highlighter-rouge">headerInterruptPrefix</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">headerInterruptEnumPrefix</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">numInterrupts</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">priorityBits</code> to <code class="highlighter-rouge">device</code></li>
+  <li>remove unused <code class="highlighter-rouge">cpu</code> from <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">cores</code> to <code class="highlighter-rouge">device</code></li>
+  <li>remove <code class="highlighter-rouge">type</code> from <code class="highlighter-rouge">interrupt</code>; local interrupts are now defined per core</li>
+</ul>
 
 <h4 id="v021-2017-10-18">v0.2.1 (2017-10-18)</h4>
 
@@ -405,6 +421,8 @@
 
 <ul>
   <li>explicit separate definitions for repetitions and arrays</li>
+  <li>simplified definitions for arrays, no explicit <code class="highlighter-rouge">[%s]</code> needed, added automatically</li>
+  <li>simplified definitions for repetitions, no explicit <code class="highlighter-rouge">%s</code> if at the end, added automatically</li>
   <li>accept repetitions for fields</li>
   <li>accept <code class="highlighter-rouge">resetValue</code> and <code class="highlighter-rouge">resetMask</code> for fields</li>
   <li>the <code class="highlighter-rouge">access</code> property was simplified to <code class="highlighter-rouge">["r","w","rw"]</code></li>
@@ -438,6 +456,16 @@
       <td style="text-align: left"><code class="highlighter-rouge">schemaVersion</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The version is used by the parser to identify different file formats.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">contentVersion</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The content version; increase it with each change.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">headerVersion</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The version to be used in the generated header; it generally follows <code class="highlighter-rouge">contentVersion</code>, but may change if the header is regenerated with a new version of <code class="highlighter-rouge">xsvd</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">devices</code></td>
@@ -493,9 +521,9 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">version</code></td>
+      <td style="text-align: left"><code class="highlighter-rouge">revision</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">The version of the device.</td>
+      <td style="text-align: left">The silican revision, usually in <code class="highlighter-rouge">r0p0</code> format.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
@@ -506,6 +534,11 @@
       <td style="text-align: left"><code class="highlighter-rouge">description</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">A long string to describe the main features of the device.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">vendor</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">The device vendor.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">busWidth</code></td>
@@ -535,17 +568,32 @@
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">headerTypePrefix</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">The prefix to be used on type definitions.</td>
+      <td style="text-align: left">The prefix to be used in type definitions.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">vendor</code></td>
-      <td style="text-align: left">object</td>
-      <td style="text-align: left">The device vendor.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">headerInterruptPrefix</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The prefix to be used in interrupt definitions.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">cpu</code></td>
+      <td style="text-align: left"><code class="highlighter-rouge">headerInterruptEnumPrefix</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The prefix to be used in the name of the interrupt enum.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">numInterrupts</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The total number of interrupts. Some platforms, like RISC-V start the count at 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">priorityBits</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The number of bits available in the Interrupt Controller for configuring priorities.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">cores</code></td>
       <td style="text-align: left">object</td>
-      <td style="text-align: left">An object defining the CPU characteristics.</td>
+      <td style="text-align: left">A map of core objects. The keys are internal IDs used to refer to the cores.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">peripherals</code></td>
@@ -628,7 +676,7 @@
   </tbody>
 </table>
 
-<h3 id="the-cpu-object">The <em>cpu</em> object</h3>
+<h3 id="the-cores-object">The <em>cores</em> object</h3>
 
 <table>
   <thead>
@@ -643,7 +691,54 @@
   </tbody>
 </table>
 
-<p>TBD</p>
+<p>Most of the properties are descriptive, and currently do not participate in code generation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">harts</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The number of hardware threads per core. The default is 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">isa</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to define the Instruction Set Architecture.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">isaVersion</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to define the Instruction Set Architecture.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">mpu</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A string that indicate whether the core is equipped with a memory protection unit (MPU). Accepted values are <code class="highlighter-rouge">true/false</code> or custom names, for example, for RISC-V use ‘pmp’. If no MPU is present, <code class="highlighter-rouge">none</code> is also accepted.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">mmu</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A string that indicate whether the core is equipped with a memory management unit (MMU). Accepted values are <code class="highlighter-rouge">true/false</code> or custom names, for example, for RISC-V use ‘sv32/sv39/sv48’. If no MMU is present, <code class="highlighter-rouge">none</code> is also accepted.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">numLocalInterrupts</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The total number of local interrupts (specific to a core). Some platforms, like RISC-V always have at least 16 interrupts.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">localInterrupts</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">A map of interrupt objects.</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="the-peripheral-object">The <em>peripheral</em> object</h3>
 
@@ -1044,6 +1139,8 @@ the lsb and the bit-width of the field.</p>
 
 <p>A field may define an enumeration in order to make the display more intuitive to read.</p>
 
+<p>The field names <code class="highlighter-rouge">mask</code>, <code class="highlighter-rouge">position</code> and <code class="highlighter-rouge">offset</code> are reserved.</p>
+
 <table>
   <thead>
     <tr>
@@ -1320,11 +1417,6 @@ the lsb and the bit-width of the field.</p>
       <td style="text-align: left"><code class="highlighter-rouge">value</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The enumeration index value associated to the interrupt.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">type</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">The interrupt type, if the architecture defines multiple interrupt spaces. Architecture specific. For RISC-V use <code class="highlighter-rouge">["local","global"]</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">headerIrqName</code></td>

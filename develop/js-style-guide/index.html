@@ -214,7 +214,7 @@
 <h1 class="page-title">JavaScript Style Guide</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Thu Oct 12 09:28:47 2017 UTC.</td>
+    <td id="last-modified">Last modified on Tue Oct 24 15:31:14 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/js-style-guide.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -328,15 +328,21 @@
 <li class="toc_level-2 toc_section-31">
 <a href="#prefer-static-classes-to-group-methods"><span class="tocnumber">4.7</span> <span class="toctext">Prefer static classes to group methods</span></a>
 </li>
+<li class="toc_level-2 toc_section-32">
+<a href="#iterate-over-an-array"><span class="tocnumber">4.8</span> <span class="toctext">Iterate over an Array</span></a>
+</li>
+<li class="toc_level-2 toc_section-33">
+<a href="#iterate-over-the-keys-of-an-object"><span class="tocnumber">4.9</span> <span class="toctext">Iterate over the keys of an Object</span></a>
+</li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-32">
+<li class="toc_level-1 toc_section-34">
 <a href="#make-node-exportsimports-look-like-es6-exportsimports"><span class="tocnumber">5</span> <span class="toctext">Make node exports/imports look like ES6 exports/imports</span></a>
 </li>
-<li class="toc_level-1 toc_section-33">
+<li class="toc_level-1 toc_section-35">
 <a href="#links-to-other-style-guides"><span class="tocnumber">6</span> <span class="toctext">Links to other style guides</span></a>
 </li>
-<li class="toc_level-1 toc_section-34">
+<li class="toc_level-1 toc_section-36">
 <a href="#linting-tools"><span class="tocnumber">7</span> <span class="toctext">Linting Tools</span></a>
 </li>
 </ul>
@@ -703,9 +709,40 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <p>The main advantage of this scheme is that adding new exports will only change the interface incrementally, minimising the risk to break backward compatibility.</p>
 
+<h3 id="iterate-over-an-array">Iterate over an Array</h3>
+
+<p>Use <code class="highlighter-rouge">for ... of</code>.</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">iterable</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">iterable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">value</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 11</span>
+<span class="c1">// 21</span>
+<span class="c1">// 31</span>
+</code></pre>
+</div>
+
+<p>As alternate solution, you can use <code class="highlighter-rouge">.forEach()</code>, but there is no way to break a loop and it is more difficult to single step</p>
+
+<p><strong>Do not</strong> use <code class="highlighter-rouge">for ... in</code> since it iterates over the enumerable properties, which include inherited properties (use <code class="highlighter-rouge">.hasOwnProperty()</code> to filter them out).</p>
+
+<h3 id="iterate-over-the-keys-of-an-object">Iterate over the keys of an Object</h3>
+
+<p>If the order is not important, iterate over the keys or the entries:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// array like object with random key ordering</span>
+<span class="kd">var</span> <span class="nx">anObj</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">100</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s1">'c'</span> <span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">anObj</span><span class="p">));</span> <span class="c1">// ['2', '7', '100']</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">anObj</span><span class="p">));</span> <span class="c1">// [ ['2', 'b'], ['7', 'c'], ['100', 'a'] ]</span>
+</code></pre>
+</div>
+
 <h2 id="make-node-exportsimports-look-like-es6-exportsimports">Make node exports/imports look like ES6 exports/imports</h2>
 
-<p>Assuming classes are prefered, the EC6 syntax for export/import would look like:</p>
+<p>Assuming classes are preferred, the EC6 syntax for export/import would look like:</p>
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="kr">class</span> <span class="nx">WscriptAvoider</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
 <span class="p">...</span>
