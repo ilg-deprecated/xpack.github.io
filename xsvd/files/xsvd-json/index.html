@@ -214,7 +214,7 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Tue Oct 24 15:30:33 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Nov  8 21:45:43 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -385,6 +385,12 @@
 <p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
 
 <p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v023-2017-10-27">v0.2.3 (2017-10-27)</h4>
+
+<ul>
+  <li>add <code class="highlighter-rouge">headerGuardPrefix</code> to <code class="highlighter-rouge">device</code></li>
+</ul>
 
 <h4 id="v022-2017-10-23">v0.2.2 (2017-10-23)</h4>
 
@@ -564,6 +570,11 @@
       <td style="text-align: left"><code class="highlighter-rouge">resetValue</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">Default value for all registers at RESET.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">headerGuardPrefix</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The prefix to be used in the header guard macro.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">headerTypePrefix</code></td>
