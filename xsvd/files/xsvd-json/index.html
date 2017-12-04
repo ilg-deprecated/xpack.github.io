@@ -214,7 +214,7 @@
 <h1 class="page-title">The xsvd format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Nov  8 21:45:43 2017 UTC.</td>
+    <td id="last-modified">Last modified on Mon Dec  4 18:22:34 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -262,48 +262,59 @@
 <a href="#revision-history"><span class="tocnumber">4</span> <span class="toctext">Revision history</span></a>
 </li>
 <li class="toc_level-1 toc_section-11">
-<a href="#objects"><span class="tocnumber">5</span> <span class="toctext">Objects</span></a>
+<a href="#arrays-and-repetitions"><span class="tocnumber">5</span> <span class="toctext">Arrays and repetitions</span></a>
 <ul>
 <li class="toc_level-2 toc_section-12">
-<a href="#the-root-object"><span class="tocnumber">5.1</span> <span class="toctext">The root object</span></a>
+<a href="#arrays"><span class="tocnumber">5.1</span> <span class="toctext">Arrays</span></a>
 </li>
 <li class="toc_level-2 toc_section-13">
-<a href="#the-device-object"><span class="tocnumber">5.2</span> <span class="toctext">The device object</span></a>
-</li>
-<li class="toc_level-2 toc_section-14">
-<a href="#the-vendor-object"><span class="tocnumber">5.3</span> <span class="toctext">The vendor object</span></a>
-</li>
-<li class="toc_level-2 toc_section-15">
-<a href="#the-cores-object"><span class="tocnumber">5.4</span> <span class="toctext">The cores object</span></a>
-</li>
-<li class="toc_level-2 toc_section-16">
-<a href="#the-peripheral-object"><span class="tocnumber">5.5</span> <span class="toctext">The peripheral object</span></a>
-</li>
-<li class="toc_level-2 toc_section-17">
-<a href="#the-cluster-object"><span class="tocnumber">5.6</span> <span class="toctext">The cluster object</span></a>
-</li>
-<li class="toc_level-2 toc_section-18">
-<a href="#the-register-object"><span class="tocnumber">5.7</span> <span class="toctext">The register object</span></a>
-</li>
-<li class="toc_level-2 toc_section-19">
-<a href="#the-field-object"><span class="tocnumber">5.8</span> <span class="toctext">The field object</span></a>
-</li>
-<li class="toc_level-2 toc_section-20">
-<a href="#the-enumeration-object"><span class="tocnumber">5.9</span> <span class="toctext">The enumeration object</span></a>
-</li>
-<li class="toc_level-2 toc_section-21">
-<a href="#the-enumerated-value-object"><span class="tocnumber">5.10</span> <span class="toctext">The enumerated value object</span></a>
-</li>
-<li class="toc_level-2 toc_section-22">
-<a href="#the-interrupt-object"><span class="tocnumber">5.11</span> <span class="toctext">The interrupt object</span></a>
-</li>
-<li class="toc_level-2 toc_section-23">
-<a href="#the-generator-object"><span class="tocnumber">5.12</span> <span class="toctext">The generator object</span></a>
+<a href="#repetitions"><span class="tocnumber">5.2</span> <span class="toctext">Repetitions</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-24">
-<a href="#todo"><span class="tocnumber">6</span> <span class="toctext">TODO</span></a>
+<li class="toc_level-1 toc_section-14">
+<a href="#objects"><span class="tocnumber">6</span> <span class="toctext">Objects</span></a>
+<ul>
+<li class="toc_level-2 toc_section-15">
+<a href="#the-root-object"><span class="tocnumber">6.1</span> <span class="toctext">The root object</span></a>
+</li>
+<li class="toc_level-2 toc_section-16">
+<a href="#the-device-object"><span class="tocnumber">6.2</span> <span class="toctext">The device object</span></a>
+</li>
+<li class="toc_level-2 toc_section-17">
+<a href="#the-vendor-object"><span class="tocnumber">6.3</span> <span class="toctext">The vendor object</span></a>
+</li>
+<li class="toc_level-2 toc_section-18">
+<a href="#the-cores-object"><span class="tocnumber">6.4</span> <span class="toctext">The cores object</span></a>
+</li>
+<li class="toc_level-2 toc_section-19">
+<a href="#the-peripheral-object"><span class="tocnumber">6.5</span> <span class="toctext">The peripheral object</span></a>
+</li>
+<li class="toc_level-2 toc_section-20">
+<a href="#the-cluster-object"><span class="tocnumber">6.6</span> <span class="toctext">The cluster object</span></a>
+</li>
+<li class="toc_level-2 toc_section-21">
+<a href="#the-register-object"><span class="tocnumber">6.7</span> <span class="toctext">The register object</span></a>
+</li>
+<li class="toc_level-2 toc_section-22">
+<a href="#the-field-object"><span class="tocnumber">6.8</span> <span class="toctext">The field object</span></a>
+</li>
+<li class="toc_level-2 toc_section-23">
+<a href="#the-enumeration-object"><span class="tocnumber">6.9</span> <span class="toctext">The enumeration object</span></a>
+</li>
+<li class="toc_level-2 toc_section-24">
+<a href="#the-enumerated-value-object"><span class="tocnumber">6.10</span> <span class="toctext">The enumerated value object</span></a>
+</li>
+<li class="toc_level-2 toc_section-25">
+<a href="#the-interrupt-object"><span class="tocnumber">6.11</span> <span class="toctext">The interrupt object</span></a>
+</li>
+<li class="toc_level-2 toc_section-26">
+<a href="#the-generator-object"><span class="tocnumber">6.12</span> <span class="toctext">The generator object</span></a>
+</li>
+</ul>
+</li>
+<li class="toc_level-1 toc_section-27">
+<a href="#todo"><span class="tocnumber">7</span> <span class="toctext">TODO</span></a>
 </li>
 </ul>
 </td>
@@ -442,6 +453,36 @@
 <h4 id="v010-2016-12-14">v0.1.0 (2016-12-14)</h4>
 
 <p>Initial version, a direct correspondence to the ARM SVD format. Firstly implemented by the xcdl program used by GNU ARM Eclipse QEMU.</p>
+
+<h2 id="arrays-and-repetitions">Arrays and repetitions</h2>
+
+<p>Although the original SVD specs treat them together, these are distinct notions.</p>
+
+<h3 id="arrays">Arrays</h3>
+
+<p>Arrays are groups of identical objects that are addressed by a numeric index, starting as zero, as in most programming languages.</p>
+
+<p>An object is considered an array if it has the <code class="highlighter-rouge">arraySize</code> property.</p>
+
+<p>Only register and cluster objects can be grouped in arrays.</p>
+
+<p>When used to generate device peripheral headers, register arrays generate C arrays of integers and cluster arrays generate C arrays os structures.</p>
+
+<p>When used to display the peripheral registers in a debugger, the recommended way to preset arrays is as a group with the object name suffixed by <code class="highlighter-rouge">[]</code>, and below it all array elements, with the names suffixed by the index, like <code class="highlighter-rouge">[0]</code>, <code class="highlighter-rouge">[1]</code>, etc.</p>
+
+<h3 id="repetitions">Repetitions</h3>
+
+<p>Repetitions are a shortcuts to define sequences of similar objects; instead of defining a long list of similar objects, only a generic one is defined, plus a rule how each individual one is named.</p>
+
+<p>An object is considered a repetition if it has the <code class="highlighter-rouge">repeatGenerator</code> property (and it is not an array, so the <code class="highlighter-rouge">repeatGenerator</code> property is ignored for arrays).</p>
+
+<p>By default, the strings defined by the <code class="highlighter-rouge">repeatGenerator</code> are added at the end of the name; if more elaborate names must be generated, the <code class="highlighter-rouge">%s</code> must be used in the desired position in the object name.</p>
+
+<p>The typical <code class="highlighter-rouge">repeatGenerator</code> defines a list of comma separated strings (like <code class="highlighter-rouge">a,b,c</code>). For numerical values, ranges are also supported (like <code class="highlighter-rouge">0-31</code>).</p>
+
+<p>Only cluster, register and field objects can use repetitions.</p>
+
+<p>Both when used to generate device peripheral headers and when used to display the peripheral registers in a debugger, repetitions generate a sequence of objects, with the names in the order given by the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
 
 <h2 id="objects">Objects</h2>
 
@@ -759,7 +800,7 @@
 Each peripheral has a memory block where the registers are allocated, defined as a base address and a size.
 Register addresses are specified relative to the base address of a peripheral.</p>
 
-<p>Multiple similar peripherals sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property; for example instead of defining <code class="highlighter-rouge">GPIOA</code>, <code class="highlighter-rouge">GPIOB</code>, <code class="highlighter-rouge">GPIOC</code>, use <code class="highlighter-rouge">GPIO%s</code> (or simply <code class="highlighter-rouge">GPIO</code>, since <code class="highlighter-rouge">%s</code> at the end is default) and define separate generators like <code class="highlighter-rouge">A,B,C</code> or <code class="highlighter-rouge">A-C</code>.</p>
+<p>Multiple similar peripherals sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property; for example instead of defining <code class="highlighter-rouge">GPIOA</code>, <code class="highlighter-rouge">GPIOB</code>, <code class="highlighter-rouge">GPIOC</code>, use <code class="highlighter-rouge">GPIO%s</code> (or simply <code class="highlighter-rouge">GPIO</code>, since <code class="highlighter-rouge">%s</code> at the end is default) and define separate generators like <code class="highlighter-rouge">A,B,C</code>.</p>
 
 <p>The <code class="highlighter-rouge">repeatIncrement</code> property specifies the address offset between two peripherals.</p>
 
@@ -898,9 +939,9 @@ Register addresses are specified relative to the base address of a peripheral.</
 
 <p>Nested clusters express hierarchical structures of registers. It is targeted at the generation of device header files to create a C-data structure within the peripheral structure instead of a flat list of registers. It is also possible to specify an array of a clusters using the <code class="highlighter-rouge">arraySize</code> property.</p>
 
-<p>Multiple similar clusters sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
+<p>Multiple identical clusters can be grouped in arrays. The size of the array is specified by the <code class="highlighter-rouge">arraySize</code> property.</p>
 
-<p>Multiple similar clusters can also be grouped in arrays. The size of the array is specified by the <code class="highlighter-rouge">arraySize</code> property.</p>
+<p>Multiple similar clusters sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
 
 <p>The <code class="highlighter-rouge">repeatIncrement</code> property specifies the offset in bytes between two clusters. If not specified, the cluster size is used.</p>
 
@@ -1029,9 +1070,9 @@ Register addresses are specified relative to the base address of a peripheral.</
 
 <p>A register can represent a single value or can be subdivided into individual bit-fields of specific functionality and semantics. From a schema perspective, the property <code class="highlighter-rouge">fields</code> is optional, however, from a specification perspective, <code class="highlighter-rouge">fields</code> are mandatory when they are described in the device documentation.</p>
 
-<p>Multiple similar registers sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
+<p>Multiple identical registers can be grouped in arrays. The size of the array is specified by the <code class="highlighter-rouge">arraySize</code> property.</p>
 
-<p>Multiple similar registers can also be grouped in arrays. The size of the array is specified by the <code class="highlighter-rouge">arraySize</code> property.</p>
+<p>Multiple similar registers sharing a common name can be defined as repetitions using the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
 
 <p>The <code class="highlighter-rouge">repeatIncrement</code> property specifies the offset in bytes between two registers. If not specified, the register width is used.</p>
 
@@ -1151,6 +1192,8 @@ the lsb and the bit-width of the field.</p>
 <p>A field may define an enumeration in order to make the display more intuitive to read.</p>
 
 <p>The field names <code class="highlighter-rouge">mask</code>, <code class="highlighter-rouge">position</code> and <code class="highlighter-rouge">offset</code> are reserved.</p>
+
+<p>Note: Array of fields are currently not implemented.</p>
 
 <table>
   <thead>
