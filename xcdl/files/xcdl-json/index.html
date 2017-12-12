@@ -9,10 +9,10 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>The xcdl format</title>
+  <title>The XCDL format</title>
   <meta name="description" content="Tools to manage, configure and build complex, package based, multi-target, C/C++ projects.">
 
-  <meta property="og:title" content="The xcdl format" />
+  <meta property="og:title" content="The XCDL format" />
   <meta property="og:site_name" content="xPack" />
 
   <link rel="alternate" type="application/rss+xml" title="xPack" href="/feed.xml" />
@@ -211,16 +211,400 @@
       <div class="site-content">
 
         
-<h1 class="page-title">The xcdl format</h1>
+<h1 class="page-title">The XCDL format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 11 11:34:10 2017 UTC.</td>
+    <td id="last-modified">Last modified on Tue Dec 12 12:27:49 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xcdl/files/xcdl-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
 
 
+<div id="toc-container">
+<table class="toc" id="toc">
+<tbody>
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toc_level-1 toc_section-1">
+<a href="#overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
+</li>
+<li class="toc_level-1 toc_section-2">
+<a href="#purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a>
+</li>
+<li class="toc_level-1 toc_section-3">
+<a href="#file-conventions"><span class="tocnumber">3</span> <span class="toctext">File conventions</span></a>
+<ul>
+<li class="toc_level-2 toc_section-4">
+<a href="#json-properties"><span class="tocnumber">3.1</span> <span class="toctext">JSON Properties</span></a>
+</li>
+<li class="toc_level-2 toc_section-5">
+<a href="#collections"><span class="tocnumber">3.2</span> <span class="toctext">Collections</span></a>
+</li>
+</ul>
+</li>
+<li class="toc_level-1 toc_section-6">
+<a href="#file-names"><span class="tocnumber">4</span> <span class="toctext">File names</span></a>
+</li>
+<li class="toc_level-1 toc_section-7">
+<a href="#objects"><span class="tocnumber">5</span> <span class="toctext">Objects</span></a>
+<ul>
+<li class="toc_level-2 toc_section-8">
+<a href="#the-root-object"><span class="tocnumber">5.1</span> <span class="toctext">The root object</span></a>
+</li>
+<li class="toc_level-2 toc_section-9">
+<a href="#the-mcu-object"><span class="tocnumber">5.2</span> <span class="toctext">The mcu object</span></a>
+</li>
+<li class="toc_level-2 toc_section-10">
+<a href="#the-family-object"><span class="tocnumber">5.3</span> <span class="toctext">The family object</span></a>
+</li>
+<li class="toc_level-2 toc_section-11">
+<a href="#the-supplier-object"><span class="tocnumber">5.4</span> <span class="toctext">The supplier object</span></a>
+</li>
+<li class="toc_level-2 toc_section-12">
+<a href="#the-device-object"><span class="tocnumber">5.5</span> <span class="toctext">The device object</span></a>
+</li>
+<li class="toc_level-2 toc_section-13">
+<a href="#the-debug-object"><span class="tocnumber">5.6</span> <span class="toctext">The debug object</span></a>
+</li>
+</ul>
+</li>
+<li class="toc_level-1 toc_section-14">
+<a href="#revision-history"><span class="tocnumber">6</span> <span class="toctext">Revision history</span></a>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="overview">Overview</h2>
+
+<p>The <strong>XCDL</strong> format was originally inspired from eCos CDL (Configuration Definition Language), and later was extended to include definitions from CMSIS PDSC.</p>
+
+<h2 id="purpose">Purpose</h2>
+
+<p>The <strong>XCDL</strong> files are used to</p>
+
+<ul>
+  <li>define the device features</li>
+  <li>define the board features</li>
+  <li>define the software components and configurations (TBD)</li>
+</ul>
+
+<h2 id="file-conventions">File conventions</h2>
+
+<h3 id="json-properties">JSON Properties</h3>
+
+<p>As with any JSON file, the content is basically an object with several properties, represented as <code class="highlighter-rouge">"name": &lt;value&gt;</code>. The values may be strings, objects or arrays of other values.</p>
+
+<p>Named children objects are stored in objects (not arrays), with the names as properties (implemented as maps, with names as keys). Compared to arrays, maps have the advantage of guaranteed unique names.</p>
+
+<h3 id="collections">Collections</h3>
+
+<p>Traditionally, collections are stored in JSON as arrays, which impose no restrictions on the content or uniqueness.</p>
+
+<p>If object names must be unique, collections of named children can be stored as objects (implemented as maps) with names as properties and children objects as values.</p>
+
+<p>To simplify usage, except named children, collections cannot have other properties.</p>
+
+<h2 id="file-names">File names</h2>
+
+<p>Specific files have names with a prefix, in singular or plural:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">devices-xcdl.json</code> or <code class="highlighter-rouge">device-xcdl.json</code></li>
+  <li><code class="highlighter-rouge">boards-xcdl.json</code> or <code class="highlighter-rouge">board-xcdl.json</code></li>
+</ul>
+
+<h2 id="objects">Objects</h2>
+
+<p>The XCDL file is a hierarchy of objects, with the JSON root on top.</p>
+
+<h3 id="the-root-object">The root object</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">schemaVersion</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The version is used by the parser to identify different file formats.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">mcus</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of mcu objects. MCU names are internal IDs used to refer to the MCU; externally use the device <code class="highlighter-rouge">displayName</code>; must be unique among all files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"schemaVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mcus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"families"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"fe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h3 id="the-mcu-object">The <em>mcu</em> object</h3>
+
+<p>The MCU is the top-most object, and usually contains one MCU family.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">families</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of family objects. The keys are internal IDs used to refer to the family.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-family-object">The <em>family</em> object</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">The <code class="highlighter-rouge">mcus</code> property of the root object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to externally identify the device family. Must be unique among all files. If missing, the internal name (the map key) is used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">description</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A long string to describe the main features of the device family.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">supplier</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">The device supplier.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">devices</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of device objects. The keys are internal IDs used to refer to the devices.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-supplier-object">The <em>supplier</em> object</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A <strong>family</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The device supplier.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">name</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The supplier short name; a single word that uses only legal variable characters.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">id</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">The supplier numeric id; should not change over time.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to externally identify the supplier.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">fullName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A longer string to externally identify the supplier, like official company name.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">contact</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">Contact information.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-device-object">The <em>device</em> object</h3>
+
+<p>The device is the basic object, and correspond to a single implementation of a MCU which has unique characteristics from the software point of view.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">The <code class="highlighter-rouge">devices</code> property of a <strong>family</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to externally identify the device. Must be unique among all files related to a supplier. If missing, the internal name (the map key) is used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">description</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A long string to describe the main features of the device.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">url</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A full URL to a page describing the device.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">compile</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">TBD</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">features</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">TBD</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">memoryRegions</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">TBD</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">debug</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">TBD</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-debug-object">The <em>debug</em> object</h3>
+
+<p>An object with definitions useful for debug sessions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A <strong>device</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">jtag</code></td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">TBD</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">xsvd</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">the relative path to the XSVD JSON file (POSIX paths). Used by the debugger to display the peripheral registers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">svd</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">the relative path to the CMSIS SVD XML file, (POSIX paths). Used by the debugger to display the peripheral registers. Ignored if the <code class="highlighter-rouge">xsvd</code> property is present.</td>
+    </tr>
+  </tbody>
+</table>
+
 <p>TBD</p>
+
+<h2 id="revision-history">Revision history</h2>
+
+<p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
+
+<p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v010-2017-12-08">v0.1.0 (2017-12-08)</h4>
+
+<ul>
+  <li>preliminary version, only some device related fields.</li>
+</ul>
 
 
 

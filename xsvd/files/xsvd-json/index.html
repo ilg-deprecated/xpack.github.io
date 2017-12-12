@@ -9,10 +9,10 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>The xsvd format</title>
+  <title>The XSVD format</title>
   <meta name="description" content="Tools to manage, configure and build complex, package based, multi-target, C/C++ projects.">
 
-  <meta property="og:title" content="The xsvd format" />
+  <meta property="og:title" content="The XSVD format" />
   <meta property="og:site_name" content="xPack" />
 
   <link rel="alternate" type="application/rss+xml" title="xPack" href="/feed.xml" />
@@ -211,10 +211,10 @@
       <div class="site-content">
 
         
-<h1 class="page-title">The xsvd format</h1>
+<h1 class="page-title">The XSVD format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Dec  6 09:44:28 2017 UTC.</td>
+    <td id="last-modified">Last modified on Tue Dec 12 12:24:46 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -242,16 +242,16 @@
 <a href="#json-properties"><span class="tocnumber">3.1</span> <span class="toctext">JSON Properties</span></a>
 </li>
 <li class="toc_level-2 toc_section-5">
-<a href="#names"><span class="tocnumber">3.2</span> <span class="toctext">Names</span></a>
+<a href="#collections"><span class="tocnumber">3.2</span> <span class="toctext">Collections</span></a>
 </li>
 <li class="toc_level-2 toc_section-6">
-<a href="#values"><span class="tocnumber">3.3</span> <span class="toctext">Values</span></a>
+<a href="#names"><span class="tocnumber">3.3</span> <span class="toctext">Names</span></a>
 </li>
 <li class="toc_level-2 toc_section-7">
-<a href="#measuring-units"><span class="tocnumber">3.4</span> <span class="toctext">Measuring units</span></a>
+<a href="#values"><span class="tocnumber">3.4</span> <span class="toctext">Values</span></a>
 </li>
 <li class="toc_level-2 toc_section-8">
-<a href="#repeat-generators"><span class="tocnumber">3.5</span> <span class="toctext">Repeat generators</span></a>
+<a href="#measuring-units"><span class="tocnumber">3.5</span> <span class="toctext">Measuring units</span></a>
 </li>
 <li class="toc_level-2 toc_section-9">
 <a href="#reset-masks"><span class="tocnumber">3.6</span> <span class="toctext">Reset masks</span></a>
@@ -259,18 +259,18 @@
 </ul>
 </li>
 <li class="toc_level-1 toc_section-10">
-<a href="#revision-history"><span class="tocnumber">4</span> <span class="toctext">Revision history</span></a>
-</li>
-<li class="toc_level-1 toc_section-11">
-<a href="#arrays-and-repetitions"><span class="tocnumber">5</span> <span class="toctext">Arrays and repetitions</span></a>
+<a href="#arrays-and-repetitions"><span class="tocnumber">4</span> <span class="toctext">Arrays and repetitions</span></a>
 <ul>
-<li class="toc_level-2 toc_section-12">
-<a href="#arrays"><span class="tocnumber">5.1</span> <span class="toctext">Arrays</span></a>
+<li class="toc_level-2 toc_section-11">
+<a href="#arrays"><span class="tocnumber">4.1</span> <span class="toctext">Arrays</span></a>
 </li>
-<li class="toc_level-2 toc_section-13">
-<a href="#repetitions"><span class="tocnumber">5.2</span> <span class="toctext">Repetitions</span></a>
+<li class="toc_level-2 toc_section-12">
+<a href="#repetitions"><span class="tocnumber">4.2</span> <span class="toctext">Repetitions</span></a>
 </li>
 </ul>
+</li>
+<li class="toc_level-1 toc_section-13">
+<a href="#differences-from-svd"><span class="tocnumber">5</span> <span class="toctext">Differences from SVD</span></a>
 </li>
 <li class="toc_level-1 toc_section-14">
 <a href="#objects"><span class="tocnumber">6</span> <span class="toctext">Objects</span></a>
@@ -282,7 +282,7 @@
 <a href="#the-device-object"><span class="tocnumber">6.2</span> <span class="toctext">The device object</span></a>
 </li>
 <li class="toc_level-2 toc_section-17">
-<a href="#the-vendor-object"><span class="tocnumber">6.3</span> <span class="toctext">The vendor object</span></a>
+<a href="#the-supplier-object"><span class="tocnumber">6.3</span> <span class="toctext">The supplier object</span></a>
 </li>
 <li class="toc_level-2 toc_section-18">
 <a href="#the-cores-object"><span class="tocnumber">6.4</span> <span class="toctext">The cores object</span></a>
@@ -314,7 +314,10 @@
 </ul>
 </li>
 <li class="toc_level-1 toc_section-27">
-<a href="#todo"><span class="tocnumber">7</span> <span class="toctext">TODO</span></a>
+<a href="#revision-history"><span class="tocnumber">7</span> <span class="toctext">Revision history</span></a>
+</li>
+<li class="toc_level-1 toc_section-28">
+<a href="#todo"><span class="tocnumber">8</span> <span class="toctext">TODO</span></a>
 </li>
 </ul>
 </td>
@@ -323,15 +326,15 @@
 </table>
 </div><h2 id="overview">Overview</h2>
 
-<p>The <strong>xsvd</strong> format is inspired from ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, which is based on XML and was influenced by <a href="https://en.wikipedia.org/wiki/IP-XACT">IP-XACT</a>.</p>
+<p>The <strong>XSVD</strong> format is inspired from ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, which is based on XML and was influenced by <a href="https://en.wikipedia.org/wiki/IP-XACT">IP-XACT</a>.</p>
 
-<p>The xsvd content is generally similar to the SVD content, but it has a better structure, using a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
+<p>The XSVD content is generally similar to the SVD content, but it has a better structure, using a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
 
-<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to xsvd.</p>
+<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to XSVD.</p>
 
 <h2 id="purpose">Purpose</h2>
 
-<p>Contrary to the wider scope of IP-XACT, the xsvd format was intentionally kept as simple as possible, since it is currently intended only for:</p>
+<p>Contrary to the wider scope of IP-XACT, the XSVD format was intentionally kept as simple as possible, since it is currently intended only for:</p>
 
 <ul>
   <li>allowing debuggers to display memory mapped peripherals, including separate register bit-fields</li>
@@ -345,11 +348,17 @@
 
 <p>As with any JSON file, the content is basically an object with several properties, represented as <code class="highlighter-rouge">"name": &lt;value&gt;</code>. The values may be strings, objects or arrays of other values.</p>
 
-<p>Named children objects are stored in objects (not arrays), with the names as properties (implemented as maps, with names as keys).</p>
+<h3 id="collections">Collections</h3>
+
+<p>Traditionally, collections are stored in JSON as arrays, which impose no restrictions on the content or uniqueness.</p>
+
+<p>If object names must be unique, collections of named children can be stored as objects (implemented as maps) with names as properties and children objects as values.</p>
+
+<p>To simplify usage, except named children, collections cannot have other properties.</p>
 
 <h3 id="names">Names</h3>
 
-<p>Since some xsvd definitions may be used to support the generation of C/C++ code files (object names may be used to compose type and macro definitions), the names must comply with ANSI C naming restrictions. In particular, they must not contain any spaces or special characters. Hyphens are allowed, but, when used to compose definitions, will be converted to underscores.</p>
+<p>Since some XSVD definitions may be used to support the generation of C/C++ code files (object names may be used to compose type and macro definitions), the names must comply with ANSI C naming restrictions. In particular, they must not contain any spaces or special characters. Hyphens are allowed, but, when used to compose definitions, will be converted to underscores.</p>
 
 <h3 id="values">Values</h3>
 
@@ -374,92 +383,9 @@
 
 <p>Note: currently not used.</p>
 
-<h3 id="repeat-generators">Repeat generators</h3>
-
-<p>The syntax used in the <code class="highlighter-rouge">repeatGenerator</code> property is:</p>
-
-<ul>
-  <li>a sequence of numbers, like <code class="highlighter-rouge">0,1,2</code></li>
-  <li>a range of numbers, like <code class="highlighter-rouge">0-31</code></li>
-  <li>a sequence of letters, like <code class="highlighter-rouge">A,B,C</code></li>
-  <li>a range of letters, like <code class="highlighter-rouge">A-G</code>.</li>
-</ul>
-
-<p>Note: currently ranges are not implemented.</p>
-
 <h3 id="reset-masks">Reset masks</h3>
 
 <p>In addition to hex values, the strings <code class="highlighter-rouge">all</code> and <code class="highlighter-rouge">none</code> can be used, with the meaning of <code class="highlighter-rouge">0xFF..FF</code> and <code class="highlighter-rouge">0x0</code>.</p>
-
-<h2 id="revision-history">Revision history</h2>
-
-<p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
-
-<p>Versions are listed in reverse chronological order.</p>
-
-<h4 id="v024-2017-12-06">v0.2.4 (2017-12-06)</h4>
-
-<ul>
-  <li>add <code class="highlighter-rouge">headerName</code> to differentiate from <code class="highlighter-rouge">displayName</code></li>
-  <li>deprecate <code class="highlighter-rouge">headerIrqName</code> in interrupts</li>
-</ul>
-
-<h4 id="v023-2017-10-27">v0.2.3 (2017-10-27)</h4>
-
-<ul>
-  <li>add <code class="highlighter-rouge">headerGuardPrefix</code> to <code class="highlighter-rouge">device</code></li>
-</ul>
-
-<h4 id="v022-2017-10-23">v0.2.2 (2017-10-23)</h4>
-
-<ul>
-  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.2</li>
-  <li>add top <code class="highlighter-rouge">headerVersion</code></li>
-  <li>add <code class="highlighter-rouge">headerInterruptPrefix</code> to <code class="highlighter-rouge">device</code></li>
-  <li>add <code class="highlighter-rouge">headerInterruptEnumPrefix</code> to <code class="highlighter-rouge">device</code></li>
-  <li>add <code class="highlighter-rouge">numInterrupts</code> to <code class="highlighter-rouge">device</code></li>
-  <li>add <code class="highlighter-rouge">priorityBits</code> to <code class="highlighter-rouge">device</code></li>
-  <li>remove unused <code class="highlighter-rouge">cpu</code> from <code class="highlighter-rouge">device</code></li>
-  <li>add <code class="highlighter-rouge">cores</code> to <code class="highlighter-rouge">device</code></li>
-  <li>remove <code class="highlighter-rouge">type</code> from <code class="highlighter-rouge">interrupt</code>; local interrupts are now defined per core</li>
-</ul>
-
-<h4 id="v021-2017-10-18">v0.2.1 (2017-10-18)</h4>
-
-<ul>
-  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.1</li>
-  <li>rename top <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">contentVersion</code></li>
-  <li>rename device <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">siliconVersion</code></li>
-  <li>add <code class="highlighter-rouge">groupName</code> to peripheral</li>
-  <li>the content of <code class="highlighter-rouge">access</code> was changed to [“r”,”w”,”rw”]</li>
-  <li><code class="highlighter-rouge">repeatIncrement</code> ignored for register</li>
-  <li>add <code class="highlighter-rouge">headerTypePrefix</code> to device</li>
-  <li>add <code class="highlighter-rouge">vendor</code> to device</li>
-</ul>
-
-<h4 id="v020-2017-10-11">v0.2.0 (2017-10-11)</h4>
-
-<p>First formal specifications defined. Used to define the SiFive devices (like the FE310-G000, the first RISC-V physical device).</p>
-
-<p>Differences from SVD:</p>
-
-<ul>
-  <li>explicit separate definitions for repetitions and arrays</li>
-  <li>simplified definitions for arrays, no explicit <code class="highlighter-rouge">[%s]</code> needed, added automatically</li>
-  <li>simplified definitions for repetitions, no explicit <code class="highlighter-rouge">%s</code> if at the end, added automatically</li>
-  <li>accept repetitions for fields</li>
-  <li>accept <code class="highlighter-rouge">resetValue</code> and <code class="highlighter-rouge">resetMask</code> for fields</li>
-  <li>the <code class="highlighter-rouge">access</code> property was simplified to <code class="highlighter-rouge">["r","w","rw"]</code></li>
-  <li>use <code class="highlighter-rouge">busWidth</code> (instead of <code class="highlighter-rouge">&lt;width&gt;</code>)</li>
-  <li>use <code class="highlighter-rouge">regWidth</code> (instead of <code class="highlighter-rouge">&lt;size&gt;</code>)</li>
-  <li>use <code class="highlighter-rouge">repeatIncrement</code> (instead of <code class="highlighter-rouge">&lt;dimIncrement&gt;</code>)</li>
-  <li>use <code class="highlighter-rouge">repeatGenerator</code> (instead of <code class="highlighter-rouge">&lt;dimIndex&gt;</code>)</li>
-  <li>use <code class="highlighter-rouge">arraySize</code> (instead of <code class="highlighter-rouge">&lt;dim&gt;</code>)</li>
-</ul>
-
-<h4 id="v010-2016-12-14">v0.1.0 (2016-12-14)</h4>
-
-<p>Initial version, a direct correspondence to the ARM SVD format. Firstly implemented by the xcdl program used by GNU ARM Eclipse QEMU.</p>
 
 <h2 id="arrays-and-repetitions">Arrays and repetitions</h2>
 
@@ -485,15 +411,36 @@
 
 <p>By default, the strings defined by the <code class="highlighter-rouge">repeatGenerator</code> are added at the end of the name; if more elaborate names must be generated, the <code class="highlighter-rouge">%s</code> must be used in the desired position in the object name.</p>
 
-<p>The typical <code class="highlighter-rouge">repeatGenerator</code> defines a list of comma separated strings (like <code class="highlighter-rouge">a,b,c</code>). For numerical values, ranges are also supported (like <code class="highlighter-rouge">0-31</code>).</p>
+<p>The typical <code class="highlighter-rouge">repeatGenerator</code> defines a list of comma separated strings (like <code class="highlighter-rouge">a,b,c</code> or <code class="highlighter-rouge">0,1,2</code>). For numerical values, ranges are also supported (like <code class="highlighter-rouge">0-31</code>).</p>
 
 <p>Only cluster, register and field objects can use repetitions.</p>
 
 <p>Both when used to generate device peripheral headers and when used to display the peripheral registers in a debugger, repetitions generate a sequence of objects, with the names in the order given by the <code class="highlighter-rouge">repeatGenerator</code> property.</p>
 
+<h2 id="differences-from-svd">Differences from SVD</h2>
+
+<p>Although inspired from SVD, the XSVD format is slightly different, taking full advantage of the JSON specifics; as such, XSVD files should be shorter, easier to read and less error prone.</p>
+
+<ul>
+  <li>accept repetitions for fields (benefits: similar fields are easier to read)</li>
+  <li>has explicit separate definitions for repetitions and arrays (benefits: improved readability)</li>
+  <li>has simplified definitions for arrays, no explicit <code class="highlighter-rouge">[%s]</code> needed, added automatically (benefits: simplified definitions, improved readability)</li>
+  <li>has simplified definitions for repetitions, no explicit <code class="highlighter-rouge">%s</code> if at the end, added automatically (benefits: simplified definitions, improved readability)</li>
+  <li>accept <code class="highlighter-rouge">resetValue</code> and <code class="highlighter-rouge">resetMask</code> for fields (benefits: less error prone, improved readability)</li>
+  <li>the <code class="highlighter-rouge">access</code> property was simplified to <code class="highlighter-rouge">["r","w","rw"]</code> (benefits: improved readability)</li>
+  <li>use <code class="highlighter-rouge">busWidth</code> (instead of <code class="highlighter-rouge">&lt;width&gt;</code>) (benefits: less ambiguity)</li>
+  <li>use <code class="highlighter-rouge">regWidth</code> (instead of <code class="highlighter-rouge">&lt;size&gt;</code>) (benefits: less ambiguity)</li>
+  <li>use <code class="highlighter-rouge">repeatIncrement</code> (instead of <code class="highlighter-rouge">&lt;dimIncrement&gt;</code>) (benefits: less ambiguity)</li>
+  <li>use <code class="highlighter-rouge">repeatGenerator</code> (instead of <code class="highlighter-rouge">&lt;dimIndex&gt;</code>) (benefits: less ambiguity)</li>
+  <li>use <code class="highlighter-rouge">arraySize</code> (instead of <code class="highlighter-rouge">&lt;dim&gt;</code>) (benefits: less ambiguity)</li>
+  <li>use <code class="highlighter-rouge">supplier</code> (instead of <code class="highlighter-rouge">&lt;vendor&gt;</code>) (benefits: more generic)</li>
+</ul>
+
+<hr />
+
 <h2 id="objects">Objects</h2>
 
-<p>The entire xsvd file is basically a hierarchy of objects, with the JSON root on top.</p>
+<p>The XSVD file is a hierarchy of objects, with the JSON root on top.</p>
 
 <h3 id="the-root-object">The root object</h3>
 
@@ -523,7 +470,7 @@
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">devices</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of device objects. Device names are internal IDs used to refer to the device; externally use the device <code class="highlighter-rouge">displayName</code>; must be unique among all files.</td>
     </tr>
     <tr>
@@ -560,7 +507,7 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">The <code class="highlighter-rouge">devices</code> property of the root object.</td>
+      <td style="text-align: left">The <code class="highlighter-rouge">devices</code> collection, a property of the root object.</td>
     </tr>
   </tbody>
 </table>
@@ -595,9 +542,9 @@
       <td style="text-align: left">A long string to describe the main features of the device.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">vendor</code></td>
+      <td style="text-align: left"><code class="highlighter-rouge">supplier</code></td>
       <td style="text-align: left">object</td>
-      <td style="text-align: left">The device vendor.</td>
+      <td style="text-align: left">The device supplier.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">busWidth</code></td>
@@ -656,12 +603,12 @@
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">cores</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of core objects. The keys are internal IDs used to refer to the cores.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">peripherals</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of peripheral objects. The keys are internal IDs used to refer to the peripherals; externally use the <code class="highlighter-rouge">displayName</code>; must be unique among devices.</td>
     </tr>
   </tbody>
@@ -691,7 +638,7 @@
 </span></code></pre>
 </div>
 
-<h3 id="the-vendor-object">The <em>vendor</em> object</h3>
+<h3 id="the-supplier-object">The <em>supplier</em> object</h3>
 
 <table>
   <thead>
@@ -706,7 +653,7 @@
   </tbody>
 </table>
 
-<p>The device vendor.</p>
+<p>The device supplier.</p>
 
 <table>
   <thead>
@@ -720,17 +667,22 @@
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">name</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">The vendor short name.</td>
+      <td style="text-align: left">The supplier short name; a single word that uses only legal variable characters.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">id</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">The vendor numeric id; should not change over time.</td>
+      <td style="text-align: left">The supplier numeric id; should not change over time.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">A string to externally identify the vendor.</td>
+      <td style="text-align: left">A short string to externally identify the supplier.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">fullName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A longer string to externally identify the supplier, like official company name.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">contact</code></td>
@@ -798,7 +750,7 @@
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">localInterrupts</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of interrupt objects.</td>
     </tr>
   </tbody>
@@ -806,7 +758,7 @@
 
 <h3 id="the-peripheral-object">The <em>peripheral</em> object</h3>
 
-<p>At least one peripheral has to be defined.</p>
+<p>At least one peripheral must be defined.</p>
 
 <p>Each peripheral describes all registers belonging to that peripheral.
 Each peripheral has a memory block where the registers are allocated, defined as a base address and a size.
@@ -917,17 +869,17 @@ Register addresses are specified relative to the base address of a peripheral.</
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">clusters</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of cluster objects. The keys are internal IDs used to refer to the clusters; externally use the cluster name.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">registers</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of register objects. The keys are internal IDs used to refer to the registers; externally use the <code class="highlighter-rouge">displayName</code>.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">interrupts</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A peripheral can have multiple associated interrupts. This entry allows the debugger to show interrupt names instead of interrupt numbers.</td>
     </tr>
   </tbody>
@@ -1046,12 +998,12 @@ Register addresses are specified relative to the base address of a peripheral.</
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">clusters</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of cluster objects. The keys are internal IDs used to refer to the clusters; externally use the cluster name.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">registers</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of register objects. The keys are internal IDs used to refer to the registers; externally use the <code class="highlighter-rouge">displayName</code>.</td>
     </tr>
   </tbody>
@@ -1177,7 +1129,7 @@ Register addresses are specified relative to the base address of a peripheral.</
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">fields</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of field objects. The keys are internal IDs used to refer to the fields; externally use the <code class="highlighter-rouge">displayName</code>.</td>
     </tr>
   </tbody>
@@ -1262,7 +1214,7 @@ the lsb and the bit-width of the field.</p>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">headerName</code></td>
       <td style="text-align: left">string</td>
-      <td style="text-align: left">A short string to be used when referring to the field in a header file. Must be unique among the parent object. If missing, the <code class="highlighter-rouge">displayName</code> or the internal name (the map key) is used. Same rules for <code class="highlighter-rouge">%s</code>.</td>
+      <td style="text-align: left">A short string to be used when referring to the field in a header file. Must be unique among the parent object. If missing, the <code class="highlighter-rouge">displayName</code> or the internal name (the map key) is used. Same rules for <code class="highlighter-rouge">%s</code>. If empty, the header lines associated with this field will not be generated.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">description</code></td>
@@ -1305,9 +1257,9 @@ the lsb and the bit-width of the field.</p>
       <td style="text-align: left">A generator of strings that substitute the placeholder <code class="highlighter-rouge">%s</code> within the <code class="highlighter-rouge">displayName</code>.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">enumeration</code></td>
-      <td style="text-align: left">object</td>
-      <td style="text-align: left">A map with a single property. The key is the enumeration name.</td>
+      <td style="text-align: left"><code class="highlighter-rouge">enumerations</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of enumeration objects. The key is the enumeration name. In the current version, only the first object is used, all the other are ignored.</td>
     </tr>
   </tbody>
 </table>
@@ -1353,7 +1305,7 @@ the lsb and the bit-width of the field.</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">The <code class="highlighter-rouge">enumeration</code> property of a <strong>field</strong> object.</td>
+      <td style="text-align: left">The <code class="highlighter-rouge">enumerations</code> property of a <strong>field</strong> object.</td>
     </tr>
   </tbody>
 </table>
@@ -1394,17 +1346,19 @@ the lsb and the bit-width of the field.</p>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">values</code></td>
-      <td style="text-align: left">object</td>
+      <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of enumerated values objects. The map keys are the enumeration numeric values (unsigned integers).</td>
     </tr>
   </tbody>
 </table>
 
+<p>Note: <code class="highlighter-rouge">derivedFrom</code> is not yet implemented.</p>
+
 <p>Example</p>
 
 <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"..."</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"enumeration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"enumerations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"clk-src-enum"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clock source"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Values to select the clock source."</span><span class="p">,</span><span class="w">
@@ -1530,8 +1484,7 @@ the lsb and the bit-width of the field.</p>
         </span><span class="nt">"uart0"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UART0 global interrupt"</span><span class="p">,</span><span class="w">
             </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"global"</span><span class="p">,</span><span class="w">
-            </span><span class="nt">"headerIrqName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"riscv_interrupt_global_handle_uart0"</span><span class="w">
+            </span><span class="nt">"headerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"riscv_interrupt_global_handle_uart0"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
     </span><span class="s2">"..."</span><span class="err">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
@@ -1541,7 +1494,7 @@ the lsb and the bit-width of the field.</p>
 
 <h3 id="the-generator-object">The <em>generator</em> object</h3>
 
-<p>This is an informative object, used to trace which tools generated or modified the xsvd file.</p>
+<p>This is an informative object, used to trace which tools generated or modified the XSVD file.</p>
 
 <table>
   <thead>
@@ -1610,6 +1563,63 @@ the lsb and the bit-width of the field.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
+
+<h2 id="revision-history">Revision history</h2>
+
+<p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
+
+<p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v024-2017-12-06">v0.2.4 (2017-12-06)</h4>
+
+<ul>
+  <li>use <code class="highlighter-rouge">enumerations</code> (plural); deprecate <code class="highlighter-rouge">enumeration</code></li>
+  <li>add <code class="highlighter-rouge">headerName</code> to differentiate from <code class="highlighter-rouge">displayName</code>; empty means <em>do not generate header line</em></li>
+  <li>deprecate <code class="highlighter-rouge">headerIrqName</code> in interrupts</li>
+  <li>use <code class="highlighter-rouge">supplier</code> instead of <code class="highlighter-rouge">vendor</code> (rename object)</li>
+  <li>add <code class="highlighter-rouge">fullName</code> to the supplier object</li>
+</ul>
+
+<h4 id="v023-2017-10-27">v0.2.3 (2017-10-27)</h4>
+
+<ul>
+  <li>add <code class="highlighter-rouge">headerGuardPrefix</code> to <code class="highlighter-rouge">device</code></li>
+</ul>
+
+<h4 id="v022-2017-10-23">v0.2.2 (2017-10-23)</h4>
+
+<ul>
+  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.2</li>
+  <li>add top <code class="highlighter-rouge">headerVersion</code></li>
+  <li>add <code class="highlighter-rouge">headerInterruptPrefix</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">headerInterruptEnumPrefix</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">numInterrupts</code> to <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">priorityBits</code> to <code class="highlighter-rouge">device</code></li>
+  <li>remove unused <code class="highlighter-rouge">cpu</code> from <code class="highlighter-rouge">device</code></li>
+  <li>add <code class="highlighter-rouge">cores</code> to <code class="highlighter-rouge">device</code></li>
+  <li>remove <code class="highlighter-rouge">type</code> from <code class="highlighter-rouge">interrupt</code>; local interrupts are now defined per core</li>
+</ul>
+
+<h4 id="v021-2017-10-18">v0.2.1 (2017-10-18)</h4>
+
+<ul>
+  <li>increase <code class="highlighter-rouge">schemaVersion</code> to 0.2.1</li>
+  <li>rename top <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">contentVersion</code></li>
+  <li>rename device <code class="highlighter-rouge">version</code> to <code class="highlighter-rouge">siliconVersion</code></li>
+  <li>add <code class="highlighter-rouge">groupName</code> to peripheral</li>
+  <li>the content of <code class="highlighter-rouge">access</code> was changed to [“r”,”w”,”rw”]</li>
+  <li><code class="highlighter-rouge">repeatIncrement</code> ignored for register</li>
+  <li>add <code class="highlighter-rouge">headerTypePrefix</code> to device</li>
+  <li>add <code class="highlighter-rouge">vendor</code> to device</li>
+</ul>
+
+<h4 id="v020-2017-10-11">v0.2.0 (2017-10-11)</h4>
+
+<p>First formal specifications defined. Used to define the SiFive devices (like the FE310-G000, the first RISC-V physical device).</p>
+
+<h4 id="v010-2016-12-14">v0.1.0 (2016-12-14)</h4>
+
+<p>Initial version, a direct correspondence to the ARM SVD format. Firstly implemented by the xcdl program used by GNU ARM Eclipse QEMU.</p>
 
 <h2 id="todo">TODO</h2>
 
