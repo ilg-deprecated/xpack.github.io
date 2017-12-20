@@ -167,12 +167,14 @@
 
 <ul>
   <li><a href="/xcdl/">Overview</a></li>
+  <li><a href="/xcdl/files/">File formats</a></li>
 </ul>
 
 <h4 id="xsvd">xsvd</h4>
 
 <ul>
   <li><a href="/xsvd/">Overview</a></li>
+  <li><a href="/xsvd/files/">File formats</a></li>
 </ul>
 
 <h4 id="developer">Developer</h4>
@@ -214,7 +216,7 @@
 <h1 class="page-title">The XCDL format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Tue Dec 12 12:27:49 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Dec 20 17:03:42 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xcdl/files/xcdl-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -233,47 +235,47 @@
 <a href="#overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
 </li>
 <li class="toc_level-1 toc_section-2">
-<a href="#purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a>
-</li>
-<li class="toc_level-1 toc_section-3">
-<a href="#file-conventions"><span class="tocnumber">3</span> <span class="toctext">File conventions</span></a>
+<a href="#file-conventions"><span class="tocnumber">2</span> <span class="toctext">File conventions</span></a>
 <ul>
-<li class="toc_level-2 toc_section-4">
-<a href="#json-properties"><span class="tocnumber">3.1</span> <span class="toctext">JSON Properties</span></a>
+<li class="toc_level-2 toc_section-3">
+<a href="#json-properties"><span class="tocnumber">2.1</span> <span class="toctext">JSON Properties</span></a>
 </li>
-<li class="toc_level-2 toc_section-5">
-<a href="#collections"><span class="tocnumber">3.2</span> <span class="toctext">Collections</span></a>
+<li class="toc_level-2 toc_section-4">
+<a href="#collections"><span class="tocnumber">2.2</span> <span class="toctext">Collections</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-6">
-<a href="#file-names"><span class="tocnumber">4</span> <span class="toctext">File names</span></a>
+<li class="toc_level-1 toc_section-5">
+<a href="#file-names"><span class="tocnumber">3</span> <span class="toctext">File names</span></a>
 </li>
-<li class="toc_level-1 toc_section-7">
-<a href="#objects"><span class="tocnumber">5</span> <span class="toctext">Objects</span></a>
+<li class="toc_level-1 toc_section-6">
+<a href="#objects"><span class="tocnumber">4</span> <span class="toctext">Objects</span></a>
 <ul>
+<li class="toc_level-2 toc_section-7">
+<a href="#the-root-object"><span class="tocnumber">4.1</span> <span class="toctext">The root object</span></a>
+</li>
 <li class="toc_level-2 toc_section-8">
-<a href="#the-root-object"><span class="tocnumber">5.1</span> <span class="toctext">The root object</span></a>
+<a href="#the-mcu-object"><span class="tocnumber">4.2</span> <span class="toctext">The mcu object</span></a>
 </li>
 <li class="toc_level-2 toc_section-9">
-<a href="#the-mcu-object"><span class="tocnumber">5.2</span> <span class="toctext">The mcu object</span></a>
+<a href="#the-family-object"><span class="tocnumber">4.3</span> <span class="toctext">The family object</span></a>
 </li>
 <li class="toc_level-2 toc_section-10">
-<a href="#the-family-object"><span class="tocnumber">5.3</span> <span class="toctext">The family object</span></a>
+<a href="#the-supplier-object"><span class="tocnumber">4.4</span> <span class="toctext">The supplier object</span></a>
 </li>
 <li class="toc_level-2 toc_section-11">
-<a href="#the-supplier-object"><span class="tocnumber">5.4</span> <span class="toctext">The supplier object</span></a>
+<a href="#the-subfamily-object"><span class="tocnumber">4.5</span> <span class="toctext">The subFamily object</span></a>
 </li>
 <li class="toc_level-2 toc_section-12">
-<a href="#the-device-object"><span class="tocnumber">5.5</span> <span class="toctext">The device object</span></a>
+<a href="#the-device-object"><span class="tocnumber">4.6</span> <span class="toctext">The device object</span></a>
 </li>
 <li class="toc_level-2 toc_section-13">
-<a href="#the-debug-object"><span class="tocnumber">5.6</span> <span class="toctext">The debug object</span></a>
+<a href="#the-debug-object"><span class="tocnumber">4.7</span> <span class="toctext">The debug object</span></a>
 </li>
 </ul>
 </li>
 <li class="toc_level-1 toc_section-14">
-<a href="#revision-history"><span class="tocnumber">6</span> <span class="toctext">Revision history</span></a>
+<a href="#revision-history"><span class="tocnumber">5</span> <span class="toctext">Revision history</span></a>
 </li>
 </ul>
 </td>
@@ -282,17 +284,7 @@
 </table>
 </div><h2 id="overview">Overview</h2>
 
-<p>The <strong>XCDL</strong> format was originally inspired from eCos CDL (Configuration Definition Language), and later was extended to include definitions from CMSIS PDSC.</p>
-
-<h2 id="purpose">Purpose</h2>
-
-<p>The <strong>XCDL</strong> files are used to</p>
-
-<ul>
-  <li>define the device features</li>
-  <li>define the board features</li>
-  <li>define the software components and configurations (TBD)</li>
-</ul>
+<p>The <strong>XCDL</strong> format describes metadata used to define various objects, from boards and devices, to software components.</p>
 
 <h2 id="file-conventions">File conventions</h2>
 
@@ -341,8 +333,8 @@
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">mcus</code></td>
-      <td style="text-align: left">collection</td>
-      <td style="text-align: left">A map of mcu objects. MCU names are internal IDs used to refer to the MCU; externally use the device <code class="highlighter-rouge">displayName</code>; must be unique among all files.</td>
+      <td style="text-align: left">object</td>
+      <td style="text-align: left">A parent for all MCU related definitions.</td>
     </tr>
   </tbody>
 </table>
@@ -423,6 +415,11 @@
       <td style="text-align: left">The device supplier.</td>
     </tr>
     <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">subFamilies</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of sub-family objects. The keys are internal IDs used to refer to the objects. (optional)</td>
+    </tr>
+    <tr>
       <td style="text-align: left"><code class="highlighter-rouge">devices</code></td>
       <td style="text-align: left">collection</td>
       <td style="text-align: left">A map of device objects. The keys are internal IDs used to refer to the devices.</td>
@@ -484,6 +481,48 @@
   </tbody>
 </table>
 
+<h3 id="the-subfamily-object">The <em>subFamily</em> object</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">The <code class="highlighter-rouge">subFamilies</code> property of a <strong>family</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A short string to externally identify the device sub-family. Must be unique among all files related to a supplier. If missing, the internal name (the map key) is used.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">description</code></td>
+      <td style="text-align: left">string</td>
+      <td style="text-align: left">A long string to describe the main features of the device sub-family.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">devices</code></td>
+      <td style="text-align: left">collection</td>
+      <td style="text-align: left">A map of device objects. The keys are internal IDs used to refer to the devices.</td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="the-device-object">The <em>device</em> object</h3>
 
 <p>The device is the basic object, and correspond to a single implementation of a MCU which has unique characteristics from the software point of view.</p>
@@ -496,7 +535,7 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left">The <code class="highlighter-rouge">devices</code> property of a <strong>family</strong> object.</td>
+      <td style="text-align: left">The <code class="highlighter-rouge">devices</code> property of a <strong>family</strong> or <strong>subFamily</strong> object.</td>
     </tr>
   </tbody>
 </table>

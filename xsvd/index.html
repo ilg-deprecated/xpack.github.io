@@ -167,12 +167,14 @@
 
 <ul>
   <li><a href="/xcdl/">Overview</a></li>
+  <li><a href="/xcdl/files/">File formats</a></li>
 </ul>
 
 <h4 id="xsvd">xsvd</h4>
 
 <ul>
   <li><a href="/xsvd/">Overview</a></li>
+  <li><a href="/xsvd/files/">File formats</a></li>
 </ul>
 
 <h4 id="developer">Developer</h4>
@@ -214,15 +216,54 @@
 <h1 class="page-title">xsvd</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Oct 11 11:35:14 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Dec 20 17:02:35 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/overview.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
 
 
-<p>TBD</p>
+<div id="toc-container">
+<table class="toc" id="toc">
+<tbody>
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toc_level-1 toc_section-1">
+<a href="#overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
+</li>
+<li class="toc_level-1 toc_section-2">
+<a href="#purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a>
+</li>
+<li class="toc_level-1 toc_section-3">
+<a href="#file-formats"><span class="tocnumber">3</span> <span class="toctext">File formats</span></a>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="overview">Overview</h2>
 
-<p>File formats</p>
+<p>The <strong>XSVD</strong> format is inspired from ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, which is based on XML and was influenced by <a href="https://en.wikipedia.org/wiki/IP-XACT">IP-XACT</a>.</p>
+
+<p>The XSVD content is generally similar to the SVD content, but it has a better structure, using a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
+
+<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to XSVD.</p>
+
+<h2 id="purpose">Purpose</h2>
+
+<p>Contrary to the wider scope of IP-XACT, the XSVD format was intentionally kept as simple as possible, since it is currently intended only for:</p>
+
+<ul>
+  <li>allowing debuggers to display memory mapped peripherals, including separate register bit-fields</li>
+  <li>supporting the automated generation of device header files</li>
+  <li>supporting the automated generation of source files implementing the peripherals in emulators (like QEMU).</li>
+</ul>
+
+<h2 id="file-formats">File formats</h2>
 
 <ul>
   <li><a href="/xsvd/files/xsvd-json/">xsvd.json</a></li>

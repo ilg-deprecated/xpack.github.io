@@ -167,12 +167,14 @@
 
 <ul>
   <li><a href="/xcdl/">Overview</a></li>
+  <li><a href="/xcdl/files/">File formats</a></li>
 </ul>
 
 <h4 id="xsvd">xsvd</h4>
 
 <ul>
   <li><a href="/xsvd/">Overview</a></li>
+  <li><a href="/xsvd/files/">File formats</a></li>
 </ul>
 
 <h4 id="developer">Developer</h4>
@@ -214,7 +216,7 @@
 <h1 class="page-title">The XSVD format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Tue Dec 12 12:24:46 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Dec 20 17:02:35 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xsvd/files/xsvd-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -233,91 +235,88 @@
 <a href="#overview"><span class="tocnumber">1</span> <span class="toctext">Overview</span></a>
 </li>
 <li class="toc_level-1 toc_section-2">
-<a href="#purpose"><span class="tocnumber">2</span> <span class="toctext">Purpose</span></a>
-</li>
-<li class="toc_level-1 toc_section-3">
-<a href="#file-conventions"><span class="tocnumber">3</span> <span class="toctext">File conventions</span></a>
+<a href="#file-conventions"><span class="tocnumber">2</span> <span class="toctext">File conventions</span></a>
 <ul>
+<li class="toc_level-2 toc_section-3">
+<a href="#json-properties"><span class="tocnumber">2.1</span> <span class="toctext">JSON Properties</span></a>
+</li>
 <li class="toc_level-2 toc_section-4">
-<a href="#json-properties"><span class="tocnumber">3.1</span> <span class="toctext">JSON Properties</span></a>
+<a href="#collections"><span class="tocnumber">2.2</span> <span class="toctext">Collections</span></a>
 </li>
 <li class="toc_level-2 toc_section-5">
-<a href="#collections"><span class="tocnumber">3.2</span> <span class="toctext">Collections</span></a>
+<a href="#names"><span class="tocnumber">2.3</span> <span class="toctext">Names</span></a>
 </li>
 <li class="toc_level-2 toc_section-6">
-<a href="#names"><span class="tocnumber">3.3</span> <span class="toctext">Names</span></a>
+<a href="#values"><span class="tocnumber">2.4</span> <span class="toctext">Values</span></a>
 </li>
 <li class="toc_level-2 toc_section-7">
-<a href="#values"><span class="tocnumber">3.4</span> <span class="toctext">Values</span></a>
+<a href="#measuring-units"><span class="tocnumber">2.5</span> <span class="toctext">Measuring units</span></a>
 </li>
 <li class="toc_level-2 toc_section-8">
-<a href="#measuring-units"><span class="tocnumber">3.5</span> <span class="toctext">Measuring units</span></a>
-</li>
-<li class="toc_level-2 toc_section-9">
-<a href="#reset-masks"><span class="tocnumber">3.6</span> <span class="toctext">Reset masks</span></a>
+<a href="#reset-masks"><span class="tocnumber">2.6</span> <span class="toctext">Reset masks</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-10">
-<a href="#arrays-and-repetitions"><span class="tocnumber">4</span> <span class="toctext">Arrays and repetitions</span></a>
+<li class="toc_level-1 toc_section-9">
+<a href="#arrays-and-repetitions"><span class="tocnumber">3</span> <span class="toctext">Arrays and repetitions</span></a>
 <ul>
-<li class="toc_level-2 toc_section-11">
-<a href="#arrays"><span class="tocnumber">4.1</span> <span class="toctext">Arrays</span></a>
+<li class="toc_level-2 toc_section-10">
+<a href="#arrays"><span class="tocnumber">3.1</span> <span class="toctext">Arrays</span></a>
 </li>
-<li class="toc_level-2 toc_section-12">
-<a href="#repetitions"><span class="tocnumber">4.2</span> <span class="toctext">Repetitions</span></a>
+<li class="toc_level-2 toc_section-11">
+<a href="#repetitions"><span class="tocnumber">3.2</span> <span class="toctext">Repetitions</span></a>
 </li>
 </ul>
+</li>
+<li class="toc_level-1 toc_section-12">
+<a href="#differences-from-svd"><span class="tocnumber">4</span> <span class="toctext">Differences from SVD</span></a>
 </li>
 <li class="toc_level-1 toc_section-13">
-<a href="#differences-from-svd"><span class="tocnumber">5</span> <span class="toctext">Differences from SVD</span></a>
-</li>
-<li class="toc_level-1 toc_section-14">
-<a href="#objects"><span class="tocnumber">6</span> <span class="toctext">Objects</span></a>
+<a href="#objects"><span class="tocnumber">5</span> <span class="toctext">Objects</span></a>
 <ul>
+<li class="toc_level-2 toc_section-14">
+<a href="#the-root-object"><span class="tocnumber">5.1</span> <span class="toctext">The root object</span></a>
+</li>
 <li class="toc_level-2 toc_section-15">
-<a href="#the-root-object"><span class="tocnumber">6.1</span> <span class="toctext">The root object</span></a>
+<a href="#the-device-object"><span class="tocnumber">5.2</span> <span class="toctext">The device object</span></a>
 </li>
 <li class="toc_level-2 toc_section-16">
-<a href="#the-device-object"><span class="tocnumber">6.2</span> <span class="toctext">The device object</span></a>
+<a href="#the-supplier-object"><span class="tocnumber">5.3</span> <span class="toctext">The supplier object</span></a>
 </li>
 <li class="toc_level-2 toc_section-17">
-<a href="#the-supplier-object"><span class="tocnumber">6.3</span> <span class="toctext">The supplier object</span></a>
+<a href="#the-cores-object"><span class="tocnumber">5.4</span> <span class="toctext">The cores object</span></a>
 </li>
 <li class="toc_level-2 toc_section-18">
-<a href="#the-cores-object"><span class="tocnumber">6.4</span> <span class="toctext">The cores object</span></a>
+<a href="#the-peripheral-object"><span class="tocnumber">5.5</span> <span class="toctext">The peripheral object</span></a>
 </li>
 <li class="toc_level-2 toc_section-19">
-<a href="#the-peripheral-object"><span class="tocnumber">6.5</span> <span class="toctext">The peripheral object</span></a>
+<a href="#the-cluster-object"><span class="tocnumber">5.6</span> <span class="toctext">The cluster object</span></a>
 </li>
 <li class="toc_level-2 toc_section-20">
-<a href="#the-cluster-object"><span class="tocnumber">6.6</span> <span class="toctext">The cluster object</span></a>
+<a href="#the-register-object"><span class="tocnumber">5.7</span> <span class="toctext">The register object</span></a>
 </li>
 <li class="toc_level-2 toc_section-21">
-<a href="#the-register-object"><span class="tocnumber">6.7</span> <span class="toctext">The register object</span></a>
+<a href="#the-field-object"><span class="tocnumber">5.8</span> <span class="toctext">The field object</span></a>
 </li>
 <li class="toc_level-2 toc_section-22">
-<a href="#the-field-object"><span class="tocnumber">6.8</span> <span class="toctext">The field object</span></a>
+<a href="#the-enumeration-object"><span class="tocnumber">5.9</span> <span class="toctext">The enumeration object</span></a>
 </li>
 <li class="toc_level-2 toc_section-23">
-<a href="#the-enumeration-object"><span class="tocnumber">6.9</span> <span class="toctext">The enumeration object</span></a>
+<a href="#the-enumerated-value-object"><span class="tocnumber">5.10</span> <span class="toctext">The enumerated value object</span></a>
 </li>
 <li class="toc_level-2 toc_section-24">
-<a href="#the-enumerated-value-object"><span class="tocnumber">6.10</span> <span class="toctext">The enumerated value object</span></a>
+<a href="#the-interrupt-object"><span class="tocnumber">5.11</span> <span class="toctext">The interrupt object</span></a>
 </li>
 <li class="toc_level-2 toc_section-25">
-<a href="#the-interrupt-object"><span class="tocnumber">6.11</span> <span class="toctext">The interrupt object</span></a>
-</li>
-<li class="toc_level-2 toc_section-26">
-<a href="#the-generator-object"><span class="tocnumber">6.12</span> <span class="toctext">The generator object</span></a>
+<a href="#the-generator-object"><span class="tocnumber">5.12</span> <span class="toctext">The generator object</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-27">
-<a href="#revision-history"><span class="tocnumber">7</span> <span class="toctext">Revision history</span></a>
+<li class="toc_level-1 toc_section-26">
+<a href="#revision-history"><span class="tocnumber">6</span> <span class="toctext">Revision history</span></a>
 </li>
-<li class="toc_level-1 toc_section-28">
-<a href="#todo"><span class="tocnumber">8</span> <span class="toctext">TODO</span></a>
+<li class="toc_level-1 toc_section-27">
+<a href="#todo"><span class="tocnumber">7</span> <span class="toctext">TODO</span></a>
 </li>
 </ul>
 </td>
@@ -326,21 +325,7 @@
 </table>
 </div><h2 id="overview">Overview</h2>
 
-<p>The <strong>XSVD</strong> format is inspired from ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, which is based on XML and was influenced by <a href="https://en.wikipedia.org/wiki/IP-XACT">IP-XACT</a>.</p>
-
-<p>The XSVD content is generally similar to the SVD content, but it has a better structure, using a hierarchy of objects with properties. As such, the natural format to represent it is JSON, which is simpler and easier to parse than XML.</p>
-
-<p>To help the migration from CMSIS Packs to xPacks, an automated tool was written to convert ARM SVD to XSVD.</p>
-
-<h2 id="purpose">Purpose</h2>
-
-<p>Contrary to the wider scope of IP-XACT, the XSVD format was intentionally kept as simple as possible, since it is currently intended only for:</p>
-
-<ul>
-  <li>allowing debuggers to display memory mapped peripherals, including separate register bit-fields</li>
-  <li>supporting the automated generation of device header files</li>
-  <li>supporting the automated generation of source files implementing the peripherals in emulators (like QEMU).</li>
-</ul>
+<p><strong>XSVD</strong> is a rework of the ARM <a href="http://www.keil.com/cmsis/svd">CMSIS SVD</a>, but cleaned, extended and rewritten in JSON instead of XML.</p>
 
 <h2 id="file-conventions">File conventions</h2>
 
