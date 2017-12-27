@@ -216,7 +216,7 @@
 <h1 class="page-title">The XCDL format</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Wed Dec 20 17:03:42 2017 UTC.</td>
+    <td id="last-modified">Last modified on Wed Dec 27 10:19:33 2017 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/xcdl/files/xcdl-json.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -270,11 +270,14 @@
 <a href="#the-device-object"><span class="tocnumber">4.6</span> <span class="toctext">The device object</span></a>
 </li>
 <li class="toc_level-2 toc_section-13">
-<a href="#the-debug-object"><span class="tocnumber">4.7</span> <span class="toctext">The debug object</span></a>
+<a href="#the-compiler-object"><span class="tocnumber">4.7</span> <span class="toctext">The compiler object</span></a>
+</li>
+<li class="toc_level-2 toc_section-14">
+<a href="#the-debug-object"><span class="tocnumber">4.8</span> <span class="toctext">The debug object</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-14">
+<li class="toc_level-1 toc_section-15">
 <a href="#revision-history"><span class="tocnumber">5</span> <span class="toctext">Revision history</span></a>
 </li>
 </ul>
@@ -454,11 +457,6 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">name</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">The supplier short name; a single word that uses only legal variable characters.</td>
-    </tr>
-    <tr>
       <td style="text-align: left"><code class="highlighter-rouge">id</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">The supplier numeric id; should not change over time.</td>
@@ -467,16 +465,6 @@
       <td style="text-align: left"><code class="highlighter-rouge">displayName</code></td>
       <td style="text-align: left">string</td>
       <td style="text-align: left">A short string to externally identify the supplier.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">fullName</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">A longer string to externally identify the supplier, like official company name.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">contact</code></td>
-      <td style="text-align: left">string</td>
-      <td style="text-align: left">Contact information.</td>
     </tr>
   </tbody>
 </table>
@@ -565,9 +553,9 @@
       <td style="text-align: left">A full URL to a page describing the device.</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="highlighter-rouge">compile</code></td>
+      <td style="text-align: left"><code class="highlighter-rouge">compiler</code></td>
       <td style="text-align: left">object</td>
-      <td style="text-align: left">TBD</td>
+      <td style="text-align: left">compiler specific definitions.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="highlighter-rouge">features</code></td>
@@ -583,6 +571,45 @@
       <td style="text-align: left"><code class="highlighter-rouge">debug</code></td>
       <td style="text-align: left">object</td>
       <td style="text-align: left">TBD</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="the-compiler-object">The <em>compiler</em> object</h3>
+
+<p>An object with definitions useful for the compiler.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Parent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">A <strong>device</strong> or <strong>board</strong> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Properties</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">headers</code></td>
+      <td style="text-align: left">string[]</td>
+      <td style="text-align: left">headers to include the board/device definitions.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="highlighter-rouge">defines</code></td>
+      <td style="text-align: left">string[]</td>
+      <td style="text-align: left">preprocessor definitions for the board/device.</td>
     </tr>
   </tbody>
 </table>
@@ -638,6 +665,14 @@
 <p>The format version is reflected in the <code class="highlighter-rouge">schemaVersion</code> property, present in the root object. The value of this property follows the semantic versioning requirements (<a href="http://semver.org">semver</a>).</p>
 
 <p>Versions are listed in reverse chronological order.</p>
+
+<h4 id="v020-2017-12-27">v0.2.0 (2017-12-27)</h4>
+
+<ul>
+  <li>simplify <code class="highlighter-rouge">supplier</code>, keep only <code class="highlighter-rouge">id</code> and <code class="highlighter-rouge">displayName</code></li>
+  <li>rename <code class="highlighter-rouge">compile</code> to <code class="highlighter-rouge">compiler</code></li>
+  <li>rename <code class="highlighter-rouge">macros</code> to <code class="highlighter-rouge">defines</code></li>
+</ul>
 
 <h4 id="v010-2017-12-08">v0.1.0 (2017-12-08)</h4>
 
