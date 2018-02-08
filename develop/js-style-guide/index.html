@@ -216,7 +216,7 @@
 <h1 class="page-title">JavaScript Style Guide</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Tue Oct 24 15:31:14 2017 UTC.</td>
+    <td id="last-modified">Last modified on Thu Feb  8 09:19:17 2018 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/js-style-guide.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -307,45 +307,48 @@
 </ul>
 </li>
 <li class="toc_level-1 toc_section-24">
-<a href="#the-xpack-project-preferences"><span class="tocnumber">4</span> <span class="toctext">The xPack project preferences</span></a>
-<ul>
-<li class="toc_level-2 toc_section-25">
-<a href="#prefer-es6-solutions"><span class="tocnumber">4.1</span> <span class="toctext">Prefer ES6 solutions</span></a>
+<a href="#the-spread-syntax"><span class="tocnumber">4</span> <span class="toctext">The Spread syntax</span></a>
 </li>
+<li class="toc_level-1 toc_section-25">
+<a href="#the-xpack-project-preferences"><span class="tocnumber">5</span> <span class="toctext">The xPack project preferences</span></a>
+<ul>
 <li class="toc_level-2 toc_section-26">
-<a href="#use-classes-as-much-as-possible"><span class="tocnumber">4.2</span> <span class="toctext">Use classes as much as possible</span></a>
+<a href="#prefer-es6-solutions"><span class="tocnumber">5.1</span> <span class="toctext">Prefer ES6 solutions</span></a>
 </li>
 <li class="toc_level-2 toc_section-27">
-<a href="#use-promises-instead-of-callbacks"><span class="tocnumber">4.3</span> <span class="toctext">Use promises instead of callbacks</span></a>
+<a href="#use-classes-as-much-as-possible"><span class="tocnumber">5.2</span> <span class="toctext">Use classes as much as possible</span></a>
 </li>
 <li class="toc_level-2 toc_section-28">
-<a href="#use-asyncawait-for-asynchronous-calls"><span class="tocnumber">4.4</span> <span class="toctext">Use async/await for asynchronous calls</span></a>
+<a href="#use-promises-instead-of-callbacks"><span class="tocnumber">5.3</span> <span class="toctext">Use promises instead of callbacks</span></a>
 </li>
 <li class="toc_level-2 toc_section-29">
-<a href="#use-static-class-members-for-sharing"><span class="tocnumber">4.5</span> <span class="toctext">Use static class members for sharing</span></a>
+<a href="#use-asyncawait-for-asynchronous-calls"><span class="tocnumber">5.4</span> <span class="toctext">Use async/await for asynchronous calls</span></a>
 </li>
 <li class="toc_level-2 toc_section-30">
-<a href="#do-not-restrict-export-to-a-single-function-or-class"><span class="tocnumber">4.6</span> <span class="toctext">Do not restrict export to a single function or class</span></a>
+<a href="#use-static-class-members-for-sharing"><span class="tocnumber">5.5</span> <span class="toctext">Use static class members for sharing</span></a>
 </li>
 <li class="toc_level-2 toc_section-31">
-<a href="#prefer-static-classes-to-group-methods"><span class="tocnumber">4.7</span> <span class="toctext">Prefer static classes to group methods</span></a>
+<a href="#do-not-restrict-export-to-a-single-function-or-class"><span class="tocnumber">5.6</span> <span class="toctext">Do not restrict export to a single function or class</span></a>
 </li>
 <li class="toc_level-2 toc_section-32">
-<a href="#iterate-over-an-array"><span class="tocnumber">4.8</span> <span class="toctext">Iterate over an Array</span></a>
+<a href="#prefer-static-classes-to-group-methods"><span class="tocnumber">5.7</span> <span class="toctext">Prefer static classes to group methods</span></a>
 </li>
 <li class="toc_level-2 toc_section-33">
-<a href="#iterate-over-the-keys-of-an-object"><span class="tocnumber">4.9</span> <span class="toctext">Iterate over the keys of an Object</span></a>
+<a href="#iterate-over-an-array"><span class="tocnumber">5.8</span> <span class="toctext">Iterate over an Array</span></a>
+</li>
+<li class="toc_level-2 toc_section-34">
+<a href="#iterate-over-the-keys-of-an-object"><span class="tocnumber">5.9</span> <span class="toctext">Iterate over the keys of an Object</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-34">
-<a href="#make-node-exportsimports-look-like-es6-exportsimports"><span class="tocnumber">5</span> <span class="toctext">Make node exports/imports look like ES6 exports/imports</span></a>
-</li>
 <li class="toc_level-1 toc_section-35">
-<a href="#links-to-other-style-guides"><span class="tocnumber">6</span> <span class="toctext">Links to other style guides</span></a>
+<a href="#make-node-exportsimports-look-like-es6-exportsimports"><span class="tocnumber">6</span> <span class="toctext">Make node exports/imports look like ES6 exports/imports</span></a>
 </li>
 <li class="toc_level-1 toc_section-36">
-<a href="#linting-tools"><span class="tocnumber">7</span> <span class="toctext">Linting Tools</span></a>
+<a href="#links-to-other-style-guides"><span class="tocnumber">7</span> <span class="toctext">Links to other style guides</span></a>
+</li>
+<li class="toc_level-1 toc_section-37">
+<a href="#linting-tools"><span class="tocnumber">8</span> <span class="toctext">Linting Tools</span></a>
 </li>
 </ul>
 </td>
@@ -653,6 +656,61 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
     </ul>
   </li>
 </ul>
+
+<h2 id="the-spread-syntax">The Spread syntax</h2>
+
+<p>According to <a href="https://codeburst.io/javascript-es6-the-spread-syntax-f5c35525f754">JavaScript ES6— The Spread Syntax (…)</a>:</p>
+
+<ul>
+  <li>The spread syntax is simply three dots: <code class="highlighter-rouge">...</code></li>
+  <li>It allows an iterable to expand in places where 0+ arguments are expected.</li>
+</ul>
+
+<p>Useful cases:</p>
+
+<ul>
+  <li>inserting Arrays</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">mid</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">...</span><span class="nx">mid</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Math</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">max</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Copy an Array</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arr</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr2</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>String to Array</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="s2">"hello"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">chars</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">str</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chars</span><span class="p">);</span>
+</code></pre>
+</div>
 
 <h2 id="the-xpack-project-preferences">The xPack project preferences</h2>
 
