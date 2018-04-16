@@ -216,7 +216,7 @@
 <h1 class="page-title">JavaScript Style Guide</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Thu Feb  8 09:19:17 2018 UTC.</td>
+    <td id="last-modified">Last modified on Mon Apr 16 11:51:05 2018 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/js-style-guide.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -775,6 +775,19 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 
 <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">iterable</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">];</span>
 
+<span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">iterable</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// 10</span>
+<span class="c1">// 20</span>
+<span class="c1">// 30</span>
+</code></pre>
+</div>
+
+<p>If the value needs to be changed, use <code class="highlighter-rouge">let</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">iterable</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">];</span>
+
 <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">value</span> <span class="nx">of</span> <span class="nx">iterable</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">value</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
@@ -797,6 +810,13 @@ is called. The <code class="highlighter-rouge">[[Construct]]</code> method is re
 <span class="kd">var</span> <span class="nx">anObj</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">100</span><span class="p">:</span> <span class="s1">'a'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">'b'</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s1">'c'</span> <span class="p">};</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">anObj</span><span class="p">));</span> <span class="c1">// ['2', '7', '100']</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">anObj</span><span class="p">));</span> <span class="c1">// [ ['2', 'b'], ['7', 'c'], ['100', 'a'] ]</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="p">[</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="nx">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">anObj</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// 2 b</span>
+<span class="c1">// 7 c</span>
+<span class="c1">// 100 a</span>
 </code></pre>
 </div>
 
