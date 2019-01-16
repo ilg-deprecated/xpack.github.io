@@ -216,7 +216,7 @@
 <h1 class="page-title">JavaScript Style Guide</h1>
 <table id="last-modified">
   <tr>
-    <td id="last-modified">Last modified on Sat Dec 22 11:57:17 2018 UTC.</td>
+    <td id="last-modified">Last modified on Wed Jan 16 11:15:50 2019 UTC.</td>
     <td id="improve" align="right"><a id="improve" href="https://github.com/xpack/xpack.github.io-source/edit/master/pages/develop/js-style-guide.md"><i class="fa fa-pencil"></i>&nbsp;&nbsp;Improve this page</a></td>
   </tr>
 </table>
@@ -294,90 +294,93 @@
 <li class="toc_level-2 toc_section-21">
 <a href="#use-a-separate-location-for-cached-variables"><span class="tocnumber">1.20</span> <span class="toctext">Use a separate location for cached variables</span></a>
 </li>
+<li class="toc_level-2 toc_section-22">
+<a href="#self"><span class="tocnumber">1.21</span> <span class="toctext">Self</span></a>
+</li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-22">
+<li class="toc_level-1 toc_section-23">
 <a href="#from-understanding-ecmascript-6"><span class="tocnumber">2</span> <span class="toctext">From Understanding ECMAScript 6</span></a>
 <ul>
-<li class="toc_level-2 toc_section-23">
+<li class="toc_level-2 toc_section-24">
 <a href="#block-bindings"><span class="tocnumber">2.1</span> <span class="toctext">Block bindings</span></a>
 </li>
-<li class="toc_level-2 toc_section-24">
+<li class="toc_level-2 toc_section-25">
 <a href="#functions"><span class="tocnumber">2.2</span> <span class="toctext">Functions</span></a>
 </li>
-<li class="toc_level-2 toc_section-25">
+<li class="toc_level-2 toc_section-26">
 <a href="#enhanced-object-functionality"><span class="tocnumber">2.3</span> <span class="toctext">Enhanced Object Functionality</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-26">
+<li class="toc_level-1 toc_section-27">
 <a href="#from-npms-funny-coding-style"><span class="tocnumber">3</span> <span class="toctext">From npm’s “funny” coding style</span></a>
 <ul>
-<li class="toc_level-2 toc_section-27">
+<li class="toc_level-2 toc_section-28">
 <a href="#line-length"><span class="tocnumber">3.1</span> <span class="toctext">Line length</span></a>
 </li>
-<li class="toc_level-2 toc_section-28">
+<li class="toc_level-2 toc_section-29">
 <a href="#indentation"><span class="tocnumber">3.2</span> <span class="toctext">Indentation</span></a>
 </li>
-<li class="toc_level-2 toc_section-29">
+<li class="toc_level-2 toc_section-30">
 <a href="#curly-braces"><span class="tocnumber">3.3</span> <span class="toctext">Curly braces</span></a>
 </li>
-<li class="toc_level-2 toc_section-30">
+<li class="toc_level-2 toc_section-31">
 <a href="#semicolons"><span class="tocnumber">3.4</span> <span class="toctext">Semicolons</span></a>
 </li>
-<li class="toc_level-2 toc_section-31">
+<li class="toc_level-2 toc_section-32">
 <a href="#comma-first"><span class="tocnumber">3.5</span> <span class="toctext">Comma first</span></a>
 </li>
-<li class="toc_level-2 toc_section-32">
+<li class="toc_level-2 toc_section-33">
 <a href="#quotes"><span class="tocnumber">3.6</span> <span class="toctext">Quotes</span></a>
 </li>
-<li class="toc_level-2 toc_section-33">
+<li class="toc_level-2 toc_section-34">
 <a href="#whitespaces"><span class="tocnumber">3.7</span> <span class="toctext">Whitespaces</span></a>
 </li>
-<li class="toc_level-2 toc_section-34">
+<li class="toc_level-2 toc_section-35">
 <a href="#functions-1"><span class="tocnumber">3.8</span> <span class="toctext">Functions</span></a>
 </li>
-<li class="toc_level-2 toc_section-35">
+<li class="toc_level-2 toc_section-36">
 <a href="#case-naming-etc"><span class="tocnumber">3.9</span> <span class="toctext">Case, naming, etc</span></a>
 </li>
-<li class="toc_level-2 toc_section-36">
+<li class="toc_level-2 toc_section-37">
 <a href="#null-undefined-false"><span class="tocnumber">3.10</span> <span class="toctext">null, undefined, false</span></a>
 </li>
-<li class="toc_level-2 toc_section-37">
+<li class="toc_level-2 toc_section-38">
 <a href="#exceptions"><span class="tocnumber">3.11</span> <span class="toctext">Exceptions</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-38">
+<li class="toc_level-1 toc_section-39">
 <a href="#from-nodejs-modules"><span class="tocnumber">4</span> <span class="toctext">From Node.js modules</span></a>
 <ul>
-<li class="toc_level-2 toc_section-39">
+<li class="toc_level-2 toc_section-40">
 <a href="#modules"><span class="tocnumber">4.1</span> <span class="toctext">Modules</span></a>
 </li>
-<li class="toc_level-2 toc_section-40">
+<li class="toc_level-2 toc_section-41">
 <a href="#caching"><span class="tocnumber">4.2</span> <span class="toctext">Caching</span></a>
 </li>
-<li class="toc_level-2 toc_section-41">
+<li class="toc_level-2 toc_section-42">
 <a href="#exports"><span class="tocnumber">4.3</span> <span class="toctext">Exports</span></a>
 </li>
-<li class="toc_level-2 toc_section-42">
+<li class="toc_level-2 toc_section-43">
 <a href="#accessing-the-main-module"><span class="tocnumber">4.4</span> <span class="toctext">Accessing the main module</span></a>
 </li>
-<li class="toc_level-2 toc_section-43">
+<li class="toc_level-2 toc_section-44">
 <a href="#the-module-wrapper"><span class="tocnumber">4.5</span> <span class="toctext">The module wrapper</span></a>
 </li>
-<li class="toc_level-2 toc_section-44">
+<li class="toc_level-2 toc_section-45">
 <a href="#global-objects"><span class="tocnumber">4.6</span> <span class="toctext">Global objects</span></a>
 </li>
 </ul>
 </li>
-<li class="toc_level-1 toc_section-45">
+<li class="toc_level-1 toc_section-46">
 <a href="#the-spread-syntax"><span class="tocnumber">5</span> <span class="toctext">The Spread syntax</span></a>
 </li>
-<li class="toc_level-1 toc_section-46">
+<li class="toc_level-1 toc_section-47">
 <a href="#links-to-other-style-guides"><span class="tocnumber">6</span> <span class="toctext">Links to other style guides</span></a>
 </li>
-<li class="toc_level-1 toc_section-47">
+<li class="toc_level-1 toc_section-48">
 <a href="#linting-tools"><span class="tocnumber">7</span> <span class="toctext">Linting Tools</span></a>
 </li>
 </ul>
@@ -737,6 +740,25 @@ Initialise it to an empty object in the constructor an in the <code class="highl
     <span class="k">this</span><span class="p">.</span><span class="nx">cache_</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="p">}</span>
 <span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="self">Self</h3>
+
+<p>When a reference to the static methods or variables is needed, to make 
+things explicit, prefer to define a <code class="highlighter-rouge">Self</code> variable.</p>
+
+<p>From within regular methods, use:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// Explicit uppercase, to be obvious when a static property/method is used.</span>
+    <span class="kr">const</span> <span class="nx">Self</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">constructor</span>
+</code></pre>
+</div>
+
+<p>From within other static methods, use:</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code>    <span class="c1">// Explicit uppercase, to be obvious when a static property/method is used.</span>
+    <span class="kr">const</span> <span class="nx">Self</span> <span class="o">=</span> <span class="k">this</span>
 </code></pre>
 </div>
 
